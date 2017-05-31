@@ -1,4 +1,6 @@
 char[][] grid;
+int level;
+int range;
 
 void setup() {
   size(850, 650);
