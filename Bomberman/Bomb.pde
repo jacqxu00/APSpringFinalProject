@@ -1,8 +1,9 @@
 class Bomb {
+  ArrayList<Fire> fire = new ArrayList<Fire>();
   float time = 2;
   int range;
-  int xcor,ycor;
-  
+  int xcor, ycor;
+
   Bomb (int xcor, int ycor, int range) {
     this.range = range;
     this.xcor = xcor;
@@ -12,13 +13,19 @@ class Bomb {
   void explode() {
     //figure out how to wait timing
     //figure out how to progress
-    for (int i = 0; i < range; i++) {
-      //make flame
-      /*move(0, 50);
-      move(-50, 0);
-      move(50, 0);
-      move(-50, 0);*/
-      //wrong but temp
+    fire.add(new Fire(xcor, ycor, false));
+    for (int i = 1; i <= range; i++) {
+      boolean moment = false;
+      if (i == range) {
+        moment = true;
+      }
+      fire.add(new Fire(xcor+50*i, ycor+50*i, moment));
+      fire.add(new Fire(xcor+50*i, ycor-50*i, moment));
+      fire.add(new Fire(xcor-50*i, ycor+50*i, moment));
+      fire.add(new Fire(xcor-50*i, ycor-50*i, moment));
+    }
+    for (Fire a : fire) {
+      a.burst();
     }
   }
 }

@@ -1,4 +1,4 @@
-class Player extends Creature{
+class Player extends Creature {
   int numBombs;
 
   void move() {
@@ -23,5 +23,4 @@ class Player extends Creature{
   void drop() {
     Bomb a = new Bomb(xcor, ycor, range);
   }
-  
 }

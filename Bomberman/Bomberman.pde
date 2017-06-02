@@ -1,8 +1,8 @@
 Block[][] grid;
 int level;
 int range;
-Attacker[] attackers;
-Bomb[] bombs;
+ArrayList<Attacker> attackers;
+ArrayList<Bomb> bombs;
 Player main;
 
 void setup() {
@@ -34,14 +34,13 @@ void changes() {
       noLoop();
       gameOver();
     }
-    /*(bombFire == main) {
+    (bombFire == main) {
       noLoop();
       gameOver();
-    }
-    else if (bombFire == attacker) {
+    } else if (bombFire == attacker) {
+      //die animation
       attacker = null;
     }
-    */
   }
 }
 
@@ -56,5 +55,4 @@ void drawCreatures() {
 }
 
 void gameOver() {
-  
 }
