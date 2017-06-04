@@ -29,8 +29,8 @@ void drawMap() {
 }
 
 void changes() {
-  for (int i = 0; i < attackers.length; i++) {
-    if (attackers[i].xcor == main.xcor && attackers[i].ycor == main.ycor) {
+  for (int i = 0; i < attackers.size(); i++) {
+    if (attackers.get(i).xcor == main.xcor && attackers.get(i).ycor == main.ycor) {
       noLoop();
       gameOver();
     }
