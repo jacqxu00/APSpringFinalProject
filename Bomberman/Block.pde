@@ -25,17 +25,17 @@ class Block {
 
   void check(Player player) {
     //PImage current = blocks.get(type);
-    //int bottomY = player.y + player.resting.height;
-    //int rightX = player.x + player.resting.width;
+    //int bottomY = player.ycor + player.resting.height;
+    //int rightX = player.xcor + player.resting.width;
     //if (type != 0) {
-    //  boolean leftFootX = player.x >= x && player.x <= x + current.width;
-    //  boolean leftFootY = bottomY >= y && bottomY <= y + current.height;
-    //  boolean rightFootX = rightX >= x && rightX <= x + current.width;
-    //  boolean rightFootY = bottomY >= y && bottomY <= y + current.height;
+    //  boolean leftFootX = player.xcor >= xcor && player.xcor <= xcor + current.width;
+    //  boolean leftFootY = bottomY >= ycor && bottomY <= ycor + current.height;
+    //  boolean rightFootX = rightX >= xcor && rightX <= xcor + current.width;
+    //  boolean rightFootY = bottomY >= ycor && bottomY <= ycor + current.height;
     //  if (leftFootX && leftFootY || rightFootX && rightFootY) {
     //    player.walk = false;
     //    if (leftFootX) {
-    //      player.x++;
+    //      player.xcor++;
     //    } else if (leftFootY) {
           
     //    }

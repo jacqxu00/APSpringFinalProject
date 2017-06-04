@@ -60,7 +60,7 @@ class Player extends Creature {
     } else {
       frame = 0;
       //makes the character look wherever it was headed to when it stops
-      image(resting, xcor, ycor+15);
+      image(resting, xcor, ycor);
     }
   }
 
@@ -69,25 +69,25 @@ class Player extends Creature {
       if (walk) {
         ycor -= 2;
       }
-      image(up.get((int)frame), xcor, ycor+15);
+      image(up.get((int)frame), xcor, ycor);
       resting = up.get(0);
     } else if (dir == 1) {
       if (walk) {
         xcor += 2;
       }
-      image(right.get((int)frame), xcor, ycor+15);
+      image(right.get((int)frame), xcor, ycor);
       resting = right.get(0);
     } else if (dir == 2) {
       if (walk) {
         ycor += 2;
       }
-      image(down.get((int)frame), xcor, ycor+15);
+      image(down.get((int)frame), xcor, ycor);
       resting = down.get(0);
     } else {
       if (walk) {
         xcor -= 2;
       }
-      image(left.get((int)frame), xcor, ycor+15);
+      image(left.get((int)frame), xcor, ycor);
       resting = left.get(0);
     }
     //this slows the animation down
@@ -96,9 +96,6 @@ class Player extends Creature {
       frame = 0;
     }
   }
-
-  //temporary checking walls but won't need this later
-
 
   void drop() {
     Bomb a = new Bomb(xcor, ycor, range);
