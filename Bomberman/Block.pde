@@ -5,7 +5,7 @@ class Block {
   Block (int type) {
     this.type = type;
   }
-  
+
   void burst(boolean canBurst) {
     if (canBurst) {
     }
