@@ -1,58 +1,23 @@
-Block[][] grid;
 int level;
 int range;
 ArrayList<Attacker> attackers;
 ArrayList<Bomb> bombs;
 Player main;
 PImage background;
+Map map;
 
 void setup() {
-  size(720, 612);
-  background(255);
+  size(720, 624);
   main = new Player();
-  
+  map = new Map(1);
   //temp
   background = loadImage("field.png");
-  
-  grid = new Block[13][15];
 }
 
 void draw() {
-  drawMap();
+  map.display();
   main.move();
   main.checkWalls();
-}
-
-void drawMap() {
-  int x = 0 ;
-  
-  //temp
-  image(background, 0, 0);
-  
-  for (int r = 0; r < grid.length; r++) {
-    for (int c = 0; c < grid[0].length; c++) {
-      if (r==0 || c==0 || r == 13 || c == 15) {
-        //wall
-        grid[r][c] = new Block(2);
-      } else if (r%2==0 && c%2==0) {
-        //solid
-        grid[r][c] = new Block(1);
-      } else {
-        //grass
-        grid[r][c] = new Block(0);
-      }
-      if (grid[r][c].type == 0) {
-        int percentage = 45 + level;
-        if (percentage > 90) {
-          percentage = 90;
-        }
-        int test = (int) random(100);
-        if (test <= percentage) {
-          grid[r][c] = new Block(1);
-        }
-      }
-    }
-  }
 }
 
 void changes() {
