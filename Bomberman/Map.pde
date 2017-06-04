@@ -5,11 +5,9 @@ class Map {
   ArrayList<Attacker> attackers;
   ArrayList<Bomb> bombs;
   ArrayList<Block> bricks;
-  ArrayList<Block> grasses;
 
   Map(int level) {
     bricks = new ArrayList<Block>();
-    grasses = new ArrayList<Block>();
     grid = new Block[15][13];
     for (int r = 0; r < grid.length; r++) {
       for (int c = 0; c < grid[0].length; c++) {
@@ -30,7 +28,7 @@ class Map {
             percentage = 90;
           }
           int test = (int) random(100);
-          if (test <= percentage) {
+          if (test <= percentage && !(r <=2 && c <= 2)) {
             Block newBlock = new Block(1, r*48, c*48);
             grid[r][c] = newBlock;
             bricks.add(newBlock);
@@ -38,23 +36,8 @@ class Map {
         }
       }
     }
-    for (int r = 0; r < grid.length; r++) {
-      for (int c = 0; c < grid[0].length; c++) {
-        if (grid[r][c].type == 0) {
-          grasses.add(grid[r][c]);
-        }
-      }
-    }
     int iPortal = (int) random(bricks.size());
     portal = new Portal(bricks.get(iPortal).xcor, bricks.get(iPortal).ycor);
-  }
-
-  String grasses() {
-    String ans = "";
-    for (Block grass : grasses) {
-      ans += "("+grass.xcor/48+","+grass.ycor/48+"),";
-    }
-    return ans;
   }
   
   void display() {

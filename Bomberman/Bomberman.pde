@@ -8,11 +8,7 @@ void setup() {
   range = 1;
   size(720, 624);
   map = new Map(level);
-  System.out.println(map.grasses());
-  //figure out how to make it so that it doesn't get stuck in a 2/1 spot
-  int iPlayer = (int) random(map.grasses.size());
-  main = new Player(map.grasses.get(iPlayer).xcor, map.grasses.get(iPlayer).ycor);
-  System.out.println(main.xcor/48+","+main.ycor/48);
+  main = new Player(1,1);
 }
 
 void draw() {
