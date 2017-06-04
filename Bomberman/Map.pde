@@ -10,13 +10,13 @@ class Map {
       for (int c = 0; c < grid[0].length; c++) {
         if (r == 0 || c == 0 || r == 14 || c == 12) {
           //wall
-          grid[r][c] = new Block(2);
+          grid[r][c] = new Block(2, r*48, c*48);
         } else if (r%2==0 && c%2==0) {
           //solid
-          grid[r][c] = new Block(1);
+          grid[r][c] = new Block(3, r*48, c*48);
         } else {
           //grass
-          grid[r][c] = new Block(0);
+          grid[r][c] = new Block(0, r*48, c*48);
         }
         //if (grid[r][c].type == 0) {
         //  int percentage = 45 + level;
@@ -37,13 +37,18 @@ class Map {
   void display() {
     for (int r = 0; r < grid.length; r++) {
       for (int c = 0; c < grid[r].length; c++) {
-        grid[r][c].display(r*48, c*48);
+        grid[r][c].display();
       }
     }
   }
 
   void check(Player player) {
     checkWalls(player);
+    for (int r = 0; r < grid.length; r++) {
+      for (int c = 0; c < grid[r].length; c++) {
+        grid[r][c].check(player);
+      }
+    }
   }
 
   void checkWalls(Player player) {

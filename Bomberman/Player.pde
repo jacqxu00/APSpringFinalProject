@@ -1,6 +1,6 @@
 class Player extends Creature {
   int numBombs;
-  int x = width/2, y = height/2, sizeVer = 45, sizeHor = 50;
+  int x = 100, y = 100, sizeVer = 45, sizeHor = 50;
   float frame = 0.0;
   boolean walk = true;
   PImage resting;
