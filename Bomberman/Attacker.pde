@@ -1,5 +1,7 @@
 class Attacker extends Creature {
-
+  
+  //MAKE SURE THAT ATTAACKERS DON'T SPAWN RIGHT NEXT TO PLAYER
+  
   void move() {
     //temporarily random
     int dir = (int) random(4);
