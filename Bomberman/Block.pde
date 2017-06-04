@@ -1,4 +1,5 @@
 class Block {
+  boolean wasInside = false;
   int type, xcor, ycor;
   ArrayList<PImage> blocks;
 
@@ -24,50 +25,55 @@ class Block {
   }
 
   void check(Player player) {
-    //PImage current = blocks.get(type);
-    //int bottomY = player.y + player.resting.height;
-    //int rightX = player.x + player.resting.width;
-    //if (type != 0) {
-    //  if ((bottomY >= y && bottomY <= y + current.height || 
-    //    player.y >= y && player.y <= y + current.height) &&
-    //    (rightX >= x && rightX <= x + current.width ||
-    //    player.x >= x || player.x <= x + current.width)) {
-    //    player.walk = false;
-    //  boolean leftFootX = player.x >= x && player.x <= x + current.width;
-    //  boolean leftFootY = bottomY >= y && bottomY <= y + current.height;
-    //  boolean rightFootX = rightX >= x && rightX <= x + current.width;
-    //  boolean rightFootY = bottomY >= y && bottomY <= y + current.height;
-    //  if (leftFootX && leftFootY || rightFootX && rightFootY) {
-    //    player.walk = false;
-    //    if (leftFootX) {
-    //      player.x++;
-    //    } else if (leftFootY) {
-
-    //    }
-    //  }
-    //}
-
-    //void checkWalls(Player player) {
-    //int x = player.xcor;
-    //int y = player.ycor;
-    //if (x <= 45 || y <= 0 || x >= width - 90 || y >= height - 45 - player.resting.height) {
-    //  player.walk = false;
-    //  //need to change the coordinate in order for it to get out of this boolean cycle
-    //  if (x <= 45) {
-    //    player.xcor++;
-    //  }
-    //  if (y <= 0) {
-    //    player.ycor++;
-    //  }
-    //  if (x >= width - 90) {
-    //    player.xcor--;
-    //  }
-    //  if (y >= height - 45 - player.resting.height) {
-    //    player.ycor--;
-    //  }
-    //} else {
-    //  player.walk = true;
-    //}
-    //  }
+    PImage current = blocks.get(type);
+    int bottomY = player.ycor + player.resting.height;
+    int rightX = player.xcor + player.resting.width;
+    if (type != 0) {
+      boolean leftFootX = player.xcor >= xcor && player.xcor <= xcor + current.width;
+      boolean footY = bottomY >= ycor && bottomY <= ycor + current.height + player.resting.height * .3;
+      boolean rightFootX = rightX >= xcor && rightX <= xcor + current.width;
+      if (leftFootX && footY || rightFootX && footY) {
+        player.walk = false;
+        if (leftFootX) {
+          player.xcor++;
+          wasInside = true;
+        } if (rightFootX) {
+          player.xcor--;
+          wasInside = true;
+        } if (bottomY <= ycor + current.height && bottomY >= ycor + current.height/2) {
+          player.ycor++;
+          wasInside = true;
+        } if (bottomY >= ycor && bottomY <= ycor + current.height/2){
+          player.ycor--;
+          wasInside = true;
+        }
+      } else if (wasInside) {
+        player.walk = true;
+        wasInside = false;
+      }
+    }
   }
 }
+
+//void checkWalls(Player player) {
+//int x = player.xcor;
+//int y = player.ycor;
+//if (x <= 45 || y <= 0 || x >= width - 90 || y >= height - 45 - player.resting.height) {
+//  player.walk = false;
+//  //need to change the coordinate in order for it to get out of this boolean cycle
+//  if (x <= 45) {
+//    player.xcor++;
+//  }
+//  if (y <= 0) {
+//    player.ycor++;
+//  }
+//  if (x >= width - 90) {
+//    player.xcor--;
+//  }
+//  if (y >= height - 45 - player.resting.height) {
+//    player.ycor--;
+//  }
+//} else {
+//  player.walk = true;
+//}
+//  }
