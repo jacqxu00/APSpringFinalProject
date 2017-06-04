@@ -1,6 +1,6 @@
 class Player extends Creature {
   int numBombs;
-  int sizeVer = 45, sizeHor = 50;
+  int sizeVer = 45, sizeHor = 50, speed = 3;
   float frame = 0.0;
   boolean walk = true;
   PImage resting;
@@ -65,25 +65,25 @@ class Player extends Creature {
   void update(int dir) {
     if (dir == 0) {
       if (walk) {
-        ycor -= 2;
+        ycor -= speed;
       }
       image(up.get((int)frame), xcor, ycor);
       resting = up.get(0);
     } else if (dir == 1) {
       if (walk) {
-        xcor += 2;
+        xcor += speed;
       }
       image(right.get((int)frame), xcor, ycor);
       resting = right.get(0);
     } else if (dir == 2) {
       if (walk) {
-        ycor += 2;
+        ycor += speed;
       }
       image(down.get((int)frame), xcor, ycor);
       resting = down.get(0);
     } else {
       if (walk) {
-        xcor -= 2;
+        xcor -= speed;
       }
       image(left.get((int)frame), xcor, ycor);
       resting = left.get(0);
