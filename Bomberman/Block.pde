@@ -7,7 +7,6 @@ class Block {
     this.y = y;
     this.type = type;
     //0 = grass, 1 = brick, 2 = wall, 3 = solid
->>>>>>> cc248e101ac895e9a4f40820386638a02cd4af6c
     blocks = new ArrayList<PImage>();
     blocks.add(loadImage("grass.png"));
     blocks.add(loadImage("brick.png"));
