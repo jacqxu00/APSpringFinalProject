@@ -1,12 +1,14 @@
 class Player extends Creature {
   int numBombs;
-  int x = 100, y = 100, sizeVer = 45, sizeHor = 50;
+  int sizeVer = 45, sizeHor = 50;
   float frame = 0.0;
   boolean walk = true;
   PImage resting;
   ArrayList<PImage> down, right, up, left, dead;
 
-  Player() {
+  Player(int xcor, int ycor) {
+    this.xcor = xcor;
+    this.ycor = ycor;
     down = new ArrayList<PImage>();
     right = new ArrayList<PImage>();
     up = new ArrayList<PImage>();
@@ -58,34 +60,34 @@ class Player extends Creature {
     } else {
       frame = 0;
       //makes the character look wherever it was headed to when it stops
-      image(resting, x, y);
+      image(resting, xcor, ycor+15);
     }
   }
 
   void update(int dir) {
     if (dir == 0) {
       if (walk) {
-        y -= 2;
+        ycor -= 2;
       }
-      image(up.get((int)frame), x, y);
+      image(up.get((int)frame), xcor, ycor+15);
       resting = up.get(0);
     } else if (dir == 1) {
       if (walk) {
-        x += 2;
+        xcor += 2;
       }
-      image(right.get((int)frame), x, y);
+      image(right.get((int)frame), xcor, ycor+15);
       resting = right.get(0);
     } else if (dir == 2) {
       if (walk) {
-        y += 2;
+        ycor += 2;
       }
-      image(down.get((int)frame), x, y);
+      image(down.get((int)frame), xcor, ycor+15);
       resting = down.get(0);
     } else {
       if (walk) {
-        x -= 2;
+        xcor -= 2;
       }
-      image(left.get((int)frame), x, y);
+      image(left.get((int)frame), xcor, ycor+15);
       resting = left.get(0);
     }
     //this slows the animation down
