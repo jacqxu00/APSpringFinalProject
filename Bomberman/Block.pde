@@ -6,7 +6,7 @@ class Block {
     this.x = x;
     this.y = y;
     this.type = type;
-<<<<<<< HEAD
+    <<<<<<< HEAD
     //3 = solid, 2 = wall, 1 = brick, 0 = grass
 =======
     //0 = grass, 1 = brick, 2 = wall, 3 = solid
