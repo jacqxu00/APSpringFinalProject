@@ -3,7 +3,9 @@ class Block {
   ArrayList<PImage> blocks;
   //type 0 is grass, 1 is removable wall, 2 is unremovable wall
 
-  Block (int type) {
+  Block (int type, int x, int y) {
+    this.x = x;
+    this.y = y;
     this.type = type;
     //0 = grass, 1 = brick, 2 = wall, 3 = solid
     blocks = new ArrayList<PImage>();
@@ -13,7 +15,7 @@ class Block {
     blocks.add(loadImage("wall.png"));
   }
 
-  void display(int x, int y) {
+  void display() {
     image(blocks.get(type), x, y);
   }
 
@@ -24,11 +26,14 @@ class Block {
 
   //void check(Player player) {
   //  PImage current = blocks.get(type);
-  //  int footY = player.y + player.resting.height;
-  //  int leftfootX = player.x + player.resting.width;
+  //  int bottomY = player.y + player.resting.height;
+  //  int rightX = player.x + player.resting.width;
   //  if (type != 0) {
-  //    if (player.x <= x + current.width || player.y >= y - player.resting.height ||
-  //      player.x >= x - player.resting.width || ) {
+  //    if ((bottomY >= y && bottomY <= y + current.height || 
+  //    player.y >= y && player.y <= y + current.height) &&
+  //    (rightX >= x && rightX <= x + current.width ||
+  //    player.x >= x || player.x <= x + current.width)) {
+  //      player.walk = false;
   //    }
   //  }
   //}
