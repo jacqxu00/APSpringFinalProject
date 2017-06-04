@@ -1,10 +1,10 @@
 int level;
 int range;
-ArrayList<Attacker> attackers;
-ArrayList<Bomb> bombs;
 Player main;
 PImage background;
 Map map;
+ArrayList<Attacker> attackers;
+ArrayList<Bomb> bombs;
 
 void setup() {
   size(720, 624);
