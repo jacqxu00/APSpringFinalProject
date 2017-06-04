@@ -45,17 +45,15 @@ class Player extends Creature {
   }
 
   void move() {
-    if (keyPressed) {
-      if (key == CODED) {
-        if (keyCode == UP) {
-          update(0);
-        } else if (keyCode == RIGHT) {
-          update(1);
-        } else if (keyCode == DOWN) {
-          update(2);
-        } else if (keyCode == LEFT) {
-          update(3);
-        }
+    if (keyPressed && key == CODED && keyCode == UP || keyCode == DOWN || keyCode == LEFT || keyCode == RIGHT ) {
+      if (keyCode == UP) {
+        update(0);
+      } else if (keyCode == RIGHT) {
+        update(1);
+      } else if (keyCode == DOWN) {
+        update(2);
+      } else {
+        update(3);
       }
     } else {
       frame = 0;
