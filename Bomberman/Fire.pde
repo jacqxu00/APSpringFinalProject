@@ -11,8 +11,11 @@ class Fire {
 
   void burst() {
     if (moment == 1) {
+      //display
     } else if (moment == 2) {
+      //display
     } else if (moment == 3) {
+      //display
     }
   }
   

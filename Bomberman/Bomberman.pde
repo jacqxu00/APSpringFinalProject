@@ -29,26 +29,34 @@ void drawMap() {
 }
 
 void changes() {
-  for (int i = 0; i < attackers.size(); i++) {
-    if (attackers.get(i).xcor == main.xcor && attackers.get(i).ycor == main.ycor) {
+  for (Attacker a : attackers) {
+    if (a.xcor == main.xcor && a.ycor == main.ycor) {
       noLoop();
       gameOver();
     }
-    (bombFire == main) {
-      noLoop();
-      gameOver();
-    } else if (bombFire == attacker) {
-      //die animation
-      attacker = null;
+  }
+  for (Bomb b : bombs) {
+    ArrayList<Fire> LofFire = b.fire;
+    for (Fire f : LofFire) {
+      if (f.xcor == main.xcor && f.ycor == main.ycor) {
+        noLoop();
+        gameOver();
+      }
+      for (Attacker a : attackers) {
+        if (f.xcor == a.xcor && f.ycor == a.ycor) {
+          //die animation
+          a = null;
+        }
+      }
     }
   }
 }
 
 void drawCreatures() {
-  for (int i = 0; i < attackers.length; i++) {
+  for (int i = 0; i < attackers.size(); i++) {
     //draw attacker based on coors
   }
-  for (int i = 0; i < bombs.length; i++) {
+  for (int i = 0; i < bombs.size(); i++) {
     //draw attacker based on coors
   }
   //draw mainplayer
