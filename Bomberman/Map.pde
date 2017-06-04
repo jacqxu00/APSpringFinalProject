@@ -11,21 +11,21 @@ class Map {
           grid[r][c] = new Block(2);
         } else if (r%2==0 && c%2==0) {
           //solid
-          grid[r][c] = new Block(1);
+          grid[r][c] = new Block(3);
         } else {
           //grass
           grid[r][c] = new Block(0);
         }
-        //if (grid[r][c].type == 0) {
-        //  int percentage = 45 + level;
-        //  if (percentage > 90) {
-        //    percentage = 90;
-        //  }
-        //  int test = (int) random(100);
-        //  if (test <= percentage) {
-        //    grid[r][c] = new Block(1);
-        //  }
-        //}
+        if (grid[r][c].type == 0) {
+          int percentage = 45 + level;
+          if (percentage > 90) {
+            percentage = 90;
+          }
+          int test = (int) random(100);
+          if (test <= percentage) {
+            grid[r][c] = new Block(1);
+          }
+        }
       }
     }
   }
