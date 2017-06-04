@@ -1,15 +1,18 @@
 int level;
 int range;
-Player main;
-PImage background;
 Map map;
-ArrayList<Attacker> attackers;
-ArrayList<Bomb> bombs;
+Player main;
 
 void setup() {
+  level = 1;
+  range = 1;
   size(720, 624);
-  main = new Player();
-  map = new Map(1);
+  map = new Map(level);
+  System.out.println(map.grasses());
+  //figure out how to make it so that it doesn't get stuck in a 2/1 spot
+  int iPlayer = (int) random(map.grasses.size());
+  main = new Player(map.grasses.get(iPlayer).xcor, map.grasses.get(iPlayer).ycor);
+  System.out.println(main.xcor/48+","+main.ycor/48);
 }
 
 void draw() {
@@ -18,40 +21,5 @@ void draw() {
   map.check(main);
 }
 
-void changes() {
-  for (Attacker a : attackers) {
-    if (a.xcor == main.xcor && a.ycor == main.ycor) {
-      noLoop();
-      gameOver();
-    }
-  }
-  for (Bomb b : bombs) {
-    ArrayList<Fire> LofFire = b.fire;
-    for (Fire f : LofFire) {
-      if (f.xcor == main.xcor && f.ycor == main.ycor) {
-        noLoop();
-        gameOver();
-      }
-      for (Attacker a : attackers) {
-        if (f.xcor == a.xcor && f.ycor == a.ycor) {
-          //die animation
-          a = null;
-        }
-      }
-    }
-  }
-  //moving changes
-}
-/*
-void drawCreatures() {
- for (int i = 0; i < attackers.size(); i++) {
- //draw attacker based on coors
- }
- for (int i = 0; i < bombs.size(); i++) {
- //draw attacker based on coors
- }
- //draw mainplayer
- }
- */
 void gameOver() {
 }

@@ -6,9 +6,9 @@ class Player extends Creature {
   PImage resting;
   ArrayList<PImage> down, right, up, left, dead;
 
-  Player() {
-    xcor = 100;
-    ycor = 100;
+  Player(int xcor, int ycor) {
+    this.xcor = xcor;
+    this.ycor = ycor;
     down = new ArrayList<PImage>();
     right = new ArrayList<PImage>();
     up = new ArrayList<PImage>();
