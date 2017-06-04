@@ -8,7 +8,7 @@ void setup() {
   range = 1;
   size(720, 624);
   map = new Map(level);
-  main = new Player(1,1);
+  main = new Player(50,50);
 }
 
 void draw() {
