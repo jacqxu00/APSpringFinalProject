@@ -10,14 +10,12 @@ void setup() {
   size(720, 624);
   main = new Player();
   map = new Map(1);
-  //temp
-  background = loadImage("field.png");
 }
 
 void draw() {
   map.display();
   main.move();
-  main.checkWalls();
+  map.check(main);
 }
 
 void changes() {

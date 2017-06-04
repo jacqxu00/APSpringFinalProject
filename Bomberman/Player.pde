@@ -96,26 +96,6 @@ class Player extends Creature {
   }
 
   //temporary checking walls but won't need this later
-  void checkWalls() {
-    if (x <= 45 || y <= 0 || x >= width - 90 || y >= height - 45 - resting.height) {
-      walk = false;
-      //need to change the coordinate in order for it to get out of this boolean cycle
-      if (x <= 45) {
-        x++;
-      }
-      if (y <= 0) {
-        y++;
-      }
-      if (x >= width - 90) {
-        x--;
-      }
-      if (y >= height - 45 - resting.height) {
-        y--;
-      }
-    } else {
-      walk = true;
-    }
-  }
 
 
   void drop() {

@@ -37,4 +37,31 @@ class Map {
       }
     }
   }
+  
+  void check(Player player) {
+    checkWalls(player);
+  }
+  
+  void checkWalls(Player player) {
+    int x = player.x;
+    int y = player.y;
+    if (x <= 45 || y <= 0 || x >= width - 90 || y >= height - 45 - player.resting.height) {
+      player.walk = false;
+      //need to change the coordinate in order for it to get out of this boolean cycle
+      if (x <= 45) {
+        player.x++;
+      }
+      if (y <= 0) {
+        player.y++;
+      }
+      if (x >= width - 90) {
+        player.x--;
+      }
+      if (y >= height - 45 - player.resting.height) {
+        player.y--;
+      }
+    } else {
+      player.walk = true;
+    }
+  }
 }
