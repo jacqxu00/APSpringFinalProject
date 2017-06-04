@@ -1,13 +1,16 @@
 class Block {
-  int type, x, y;
+  int type, xcor, ycor;
   ArrayList<PImage> blocks;
-  //type 0 is grass, 1 is removable wall, 2 is unremovable wall
 
   Block (int type, int x, int y) {
     this.x = x;
     this.y = y;
     this.type = type;
+<<<<<<< HEAD
+    //3 = solid, 2 = wall, 1 = brick, 0 = grass
+=======
     //0 = grass, 1 = brick, 2 = wall, 3 = solid
+>>>>>>> cc248e101ac895e9a4f40820386638a02cd4af6c
     blocks = new ArrayList<PImage>();
     blocks.add(loadImage("grass.png"));
     blocks.add(loadImage("brick.png"));
@@ -19,8 +22,8 @@ class Block {
     image(blocks.get(type), x, y);
   }
 
-  void burst(boolean canBurst) {
-    if (canBurst) {
+  void burst() {
+    if (type == 1) {
     }
   }
 

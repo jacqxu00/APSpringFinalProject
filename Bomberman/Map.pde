@@ -1,6 +1,8 @@
 class Map {
   Block[][] grid;
   int level;
+  Portal portal;
+  ArrayList<Block> bricks;
 
   Map(int level) {
     grid = new Block[15][13];
@@ -28,6 +30,8 @@ class Map {
         //}
       }
     }
+    int i = (int) random(bricks.size());
+    portal = new Portal(bricks.get(i).xcor, bricks.get(i).ycor);
   }
 
   void display() {
@@ -37,7 +41,7 @@ class Map {
       }
     }
   }
-  
+
   void check(Player player) {
     checkWalls(player);
     for (int r = 0; r < grid.length; r++) {
@@ -46,7 +50,7 @@ class Map {
       }
     }
   }
-  
+
   void checkWalls(Player player) {
     int x = player.x;
     int y = player.y;
