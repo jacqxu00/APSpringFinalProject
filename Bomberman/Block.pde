@@ -2,9 +2,9 @@ class Block {
   int type, xcor, ycor;
   ArrayList<PImage> blocks;
 
-  Block (int type, int x, int y) {
-    this.x = x;
-    this.y = y;
+  Block (int type, int xcor, int ycor) {
+    this.xcor = xcor;
+    this.ycor = ycor;
     this.type = type;
     //0 = grass, 1 = brick, 2 = wall, 3 = solid
     blocks = new ArrayList<PImage>();
@@ -15,7 +15,7 @@ class Block {
   }
 
   void display() {
-    image(blocks.get(type), x, y);
+    image(blocks.get(type), xcor, ycor);
   }
 
   void burst() {
