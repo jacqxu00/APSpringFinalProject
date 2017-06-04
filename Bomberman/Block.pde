@@ -28,14 +28,11 @@ class Block {
     //int bottomY = player.y + player.resting.height;
     //int rightX = player.x + player.resting.width;
     //if (type != 0) {
-<<<<<<< HEAD
     //  if ((bottomY >= y && bottomY <= y + current.height || 
     //    player.y >= y && player.y <= y + current.height) &&
     //    (rightX >= x && rightX <= x + current.width ||
     //    player.x >= x || player.x <= x + current.width)) {
     //    player.walk = false;
-=======
->>>>>>> 94011dccb12c7821747fedbc674c6971e3abc2d4
     //  boolean leftFootX = player.x >= x && player.x <= x + current.width;
     //  boolean leftFootY = bottomY >= y && bottomY <= y + current.height;
     //  boolean rightFootX = rightX >= x && rightX <= x + current.width;
