@@ -34,21 +34,21 @@ class Block {
       boolean rightFootX = rightX >= xcor && rightX <= xcor + current.width;
       if (leftFootX && footY || rightFootX && footY) {
         player.walk = false;
-        if (leftFootX) {
+        if (bottomY >= ycor && bottomY <= ycor + 20 && (leftFootX || rightFootX)) {
+          println("up");
+          player.ycor--;
+          wasInside = true;
+        } if (player.xcor <= xcor + current.width && player.xcor >= xcor + current.width - 20 && footY) {
           println("right");
           player.xcor++;
           wasInside = true;
-        } if (rightFootX) {
-          println("left");
-          player.xcor--;
-          wasInside = true;
-        } if (bottomY <= ycor + current.height && bottomY >= ycor + current.height/2) {
+        } if (player.ycor <= ycor + current.height && player.ycor >= ycor + current.height - 20 && (leftFootX || rightFootX)) {
           println("down");
           player.ycor++;
           wasInside = true;
-        } if (bottomY >= ycor && bottomY <= ycor + current.height/2){
-          println("up");
-          player.ycor--;
+        } if (rightX >= xcor && rightX <= xcor + 20 && footY){
+          println("left");
+          player.xcor--;
           wasInside = true;
         }
       } else if (wasInside) {
