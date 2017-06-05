@@ -21,23 +21,23 @@ class Map {
           //grass
           grid[r][c] = new Block(0, r*48, c*48);
         }
-        if (grid[r][c].type == 0) {
-          //brick
-          int percentage = 45 + level;
-          if (percentage > 90) {
-            percentage = 90;
-          }
-          int test = (int) random(100);
-          if (test <= percentage && !(r <=2 && c <= 2)) {
-            Block newBlock = new Block(1, r*48, c*48);
-            grid[r][c] = newBlock;
-            bricks.add(newBlock);
-          }
-        }
+        //if (grid[r][c].type == 0) {
+        //  //brick
+        //  int percentage = 45 + level;
+        //  if (percentage > 90) {
+        //    percentage = 90;
+        //  }
+        //  int test = (int) random(100);
+        //  if (test <= percentage && !(r <=2 && c <= 2)) {
+        //    Block newBlock = new Block(1, r*48, c*48);
+        //    grid[r][c] = newBlock;
+        //    bricks.add(newBlock);
+        //  }
+        //}
       }
     }
-    int iPortal = (int) random(bricks.size());
-    portal = new Portal(bricks.get(iPortal).xcor, bricks.get(iPortal).ycor);
+    //int iPortal = (int) random(bricks.size());
+    //portal = new Portal(bricks.get(iPortal).xcor, bricks.get(iPortal).ycor);
   }
   
   void display() {

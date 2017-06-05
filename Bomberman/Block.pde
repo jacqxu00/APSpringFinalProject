@@ -26,8 +26,8 @@ class Block {
 
   void check(Player player) {
     PImage current = blocks.get(type);
-    int bottomY = player.ycor + player.resting.height;
-    int rightX = player.xcor + player.resting.width;
+    float bottomY = player.ycor + player.resting.height;
+    float rightX = player.xcor + player.resting.width;
     if (type != 0) {
       boolean leftFootX = player.xcor >= xcor && player.xcor <= xcor + current.width;
       boolean footY = bottomY >= ycor && bottomY <= ycor + current.height + player.resting.height * .3;
@@ -35,15 +35,19 @@ class Block {
       if (leftFootX && footY || rightFootX && footY) {
         player.walk = false;
         if (leftFootX) {
+          println("right");
           player.xcor++;
           wasInside = true;
         } if (rightFootX) {
+          println("left");
           player.xcor--;
           wasInside = true;
         } if (bottomY <= ycor + current.height && bottomY >= ycor + current.height/2) {
+          println("down");
           player.ycor++;
           wasInside = true;
         } if (bottomY >= ycor && bottomY <= ycor + current.height/2){
+          println("up");
           player.ycor--;
           wasInside = true;
         }
