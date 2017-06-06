@@ -5,10 +5,13 @@ class Player extends Creature {
   boolean walk = true;
   PImage resting;
   ArrayList<PImage> down, right, up, left, dead;
+  boolean motion;
+  int range;
 
-  Player(int xcor, int ycor) {
+  Player(int xcor, int ycor, int range) {
     this.xcor = xcor;
     this.ycor = ycor;
+    this.range = range;
     down = new ArrayList<PImage>();
     right = new ArrayList<PImage>();
     up = new ArrayList<PImage>();
@@ -55,6 +58,8 @@ class Player extends Creature {
       } else {
         update(3);
       }
+    } else if (keyPressed && key == ' ') {
+      drop();
     } else {
       frame = 0;
       //makes the character look wherever it was headed to when it stops
@@ -95,7 +100,7 @@ class Player extends Creature {
     }
   }
 
-  void drop() {
-    Bomb a = new Bomb(xcor, ycor, range);
+  Bomb drop() {
+    return new Bomb(xcor/48 * 48, ycor/48 * 48, range);
   }
 }
