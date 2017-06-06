@@ -35,19 +35,15 @@ class Block {
       if (leftFootX && footY || rightFootX && footY) {
         player.walk = false;
         if (bottomY >= ycor && bottomY <= ycor + 20 && (leftFootX || rightFootX)) {
-          println("up");
           player.ycor--;
           wasInside = true;
         } if (player.xcor <= xcor + current.width && player.xcor >= xcor + current.width - 20 && footY) {
-          println("right");
           player.xcor++;
           wasInside = true;
         } if (bottomY - player.resting.height * .3 <= ycor + current.height && bottomY - player.resting.height * .3 >= ycor + current.height - 20 && (leftFootX || rightFootX)) {
-          println("down");
           player.ycor++;
           wasInside = true;
         } if (rightX >= xcor && rightX <= xcor + 20 && footY){
-          println("left");
           player.xcor--;
           wasInside = true;
         }
