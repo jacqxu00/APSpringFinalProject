@@ -42,7 +42,7 @@ class Block {
           println("right");
           player.xcor++;
           wasInside = true;
-        } if (player.ycor <= ycor + current.height && player.ycor >= ycor + current.height - 20 && (leftFootX || rightFootX)) {
+        } if (bottomY - player.resting.height * .3 <= ycor + current.height && bottomY - player.resting.height * .3 >= ycor + current.height - 20 && (leftFootX || rightFootX)) {
           println("down");
           player.ycor++;
           wasInside = true;
