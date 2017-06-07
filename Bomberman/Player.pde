@@ -25,7 +25,45 @@ class Player extends Creature {
     }
   }
 
+<<<<<<< HEAD
   Bomb drop() {
     return new Bomb(xcor/48 * 48, ycor/48 * 48, range);
+=======
+  void update(int dir) {
+    if (dir == 0) {
+      if (walk) {
+        ycor -= speed;
+      }
+      image(up.get((int)frame), xcor, ycor);
+      resting = up.get(0);
+    } else if (dir == 1) {
+      if (walk) {
+        xcor += speed;
+      }
+      image(right.get((int)frame), xcor, ycor);
+      resting = right.get(0);
+    } else if (dir == 2) {
+      if (walk) {
+        ycor += speed;
+      }
+      image(down.get((int)frame), xcor, ycor);
+      resting = down.get(0);
+    } else {
+      if (walk) {
+        xcor -= speed;
+      }
+      image(left.get((int)frame), xcor, ycor);
+      resting = left.get(0);
+    }
+    //this slows the animation down
+    frame += 0.175;
+    if (frame >= 7) {
+      frame = 0;
+    }
+  }
+
+  Bomb drop() {
+    return new Bomb((xcor+resting.width/2)/48 * 48, (ycor+resting.height-5)/48 * 48, range);
+>>>>>>> master
   }
 }
