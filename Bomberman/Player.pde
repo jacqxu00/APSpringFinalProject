@@ -1,6 +1,6 @@
 class Player extends Creature {
   int numBombs;
-  int sizeVer = 45, sizeHor = 50, speed = 3;
+  int speed = 3;
   float frame = 0.0;
   boolean walk = true;
   PImage resting;
@@ -17,29 +17,24 @@ class Player extends Creature {
 
     //adding all sprites to its respective arraylists
     for (int i = 0; i < 7; i++) {
-      PImage current = loadImage("down" + i + ".png");
-      current.resize(sizeVer, 0);
+      PImage current = loadImage("player/down" + i + ".png");
       down.add(current);
     }
     resting = down.get(0);
     for (int i = 0; i < 7; i++) {
-      PImage current = loadImage("right" + i + ".png");
-      current.resize(sizeHor, 0);
+      PImage current = loadImage("player/right" + i + ".png");
       right.add(current);
     }
     for (int i = 0; i < 7; i++) {
-      PImage current = loadImage("up" + i + ".png");
-      current.resize(sizeVer, 0);
+      PImage current = loadImage("player/up" + i + ".png");
       up.add(current);
     }
     for (int i = 0; i < 7; i++) {
-      PImage current = loadImage("left" + i + ".png");
-      current.resize(sizeHor, 0);
+      PImage current = loadImage("player/left" + i + ".png");
       left.add(current);
     }
     for (int i = 0; i < 4; i++) {
-      PImage current = loadImage("dead" + i + ".png");
-      current.resize(sizeVer, 0);
+      PImage current = loadImage("player/dead" + i + ".png");
       dead.add(current);
     }
   }
