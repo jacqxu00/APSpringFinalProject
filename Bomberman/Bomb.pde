@@ -29,10 +29,10 @@ class Bomb {
         if (i == range) {
           end = true;
         }
-        fire[0][i-1] = new Fire(xcor+50*i, ycor+50*i, end);
-        fire[1][i-1] = new Fire(xcor+50*i, ycor-50*i, end);
-        fire[2][i-1] = new Fire(xcor-50*i, ycor+50*i, end);
-        fire[3][i-1] = new Fire(xcor-50*i, ycor-50*i, end);
+        fire[0][i-1] = new Fire(xcor+50*i, ycor, end); //right
+        fire[1][i-1] = new Fire(xcor-50*i, ycor, end); //left
+        fire[2][i-1] = new Fire(xcor, ycor+50*i, end); //down
+        fire[3][i-1] = new Fire(xcor, ycor-50*i, end); //up
       }
     }
   }
