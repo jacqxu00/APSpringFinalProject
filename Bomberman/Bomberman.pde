@@ -9,21 +9,18 @@ void setup() {
   range = 1;
   size(720, 624);
   map = new Map(level);
-  main = new Player(50,50);
-  
+  main = new Player(50, 50);
+
   //temp
-  attacker = new Attacker(100,100);
+  attacker = new Attacker(100, 100);
 }
 
 void draw() {
   map.display();
   main.move();
-  
   //temp
   attacker.move();
-  
   map.check(main);
-  
   //temp
   map.check(attacker);
 }
