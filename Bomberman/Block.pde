@@ -24,31 +24,31 @@ class Block {
     }
   }
 
-  void check(Player player) {
+  void check(Creature creature) {
     PImage current = blocks.get(type);
-    float bottomY = player.ycor + player.resting.height;
-    float rightX = player.xcor + player.resting.width;
+    float bottomY = creature.ycor + creature.resting.height;
+    float rightX = creature.xcor + creature.resting.width;
     if (type != 0) {
-      boolean leftFootX = player.xcor >= xcor && player.xcor <= xcor + current.width;
-      boolean footY = bottomY >= ycor && bottomY <= ycor + current.height + player.resting.height * .3;
+      boolean leftFootX = creature.xcor >= xcor && creature.xcor <= xcor + current.width;
+      boolean footY = bottomY >= ycor && bottomY <= ycor + current.height + creature.resting.height * .3;
       boolean rightFootX = rightX >= xcor && rightX <= xcor + current.width;
       if (leftFootX && footY || rightFootX && footY) {
-        player.walk = false;
+        creature.walk = false;
         if (bottomY >= ycor && bottomY <= ycor + 20 && (leftFootX || rightFootX)) {
-          player.ycor--;
+          creature.ycor--;
           wasInside = true;
-        } if (player.xcor <= xcor + current.width && player.xcor >= xcor + current.width - 20 && footY) {
-          player.xcor++;
+        } if (creature.xcor <= xcor + current.width && creature.xcor >= xcor + current.width - 20 && footY) {
+          creature.xcor++;
           wasInside = true;
-        } if (bottomY - player.resting.height * .3 <= ycor + current.height && bottomY - player.resting.height * .3 >= ycor + current.height - 20 && (leftFootX || rightFootX)) {
-          player.ycor++;
+        } if (bottomY - creature.resting.height * .3 <= ycor + current.height && bottomY - creature.resting.height * .3 >= ycor + current.height - 20 && (leftFootX || rightFootX)) {
+          creature.ycor++;
           wasInside = true;
         } if (rightX >= xcor && rightX <= xcor + 20 && footY){
-          player.xcor--;
+          creature.xcor--;
           wasInside = true;
         }
       } else if (wasInside) {
-        player.walk = true;
+        creature.walk = true;
         wasInside = false;
       }
     }

@@ -1,6 +1,7 @@
 class Player extends Creature {
   int numBombs;
-  int sizeVer = 45, sizeHor = 50, speed = 3;
+<<<<<<< HEAD
+  int speed = 3;
   float frame = 0.0;
   boolean walk = true;
   PImage resting;
@@ -20,31 +21,31 @@ class Player extends Creature {
 
     //adding all sprites to its respective arraylists
     for (int i = 0; i < 7; i++) {
-      PImage current = loadImage("down" + i + ".png");
-      current.resize(sizeVer, 0);
+      PImage current = loadImage("player/down" + i + ".png");
       down.add(current);
     }
     resting = down.get(0);
     for (int i = 0; i < 7; i++) {
-      PImage current = loadImage("right" + i + ".png");
-      current.resize(sizeHor, 0);
+      PImage current = loadImage("player/right" + i + ".png");
       right.add(current);
     }
     for (int i = 0; i < 7; i++) {
-      PImage current = loadImage("up" + i + ".png");
-      current.resize(sizeVer, 0);
+      PImage current = loadImage("player/up" + i + ".png");
       up.add(current);
     }
     for (int i = 0; i < 7; i++) {
-      PImage current = loadImage("left" + i + ".png");
-      current.resize(sizeHor, 0);
+      PImage current = loadImage("player/left" + i + ".png");
       left.add(current);
     }
     for (int i = 0; i < 4; i++) {
-      PImage current = loadImage("dead" + i + ".png");
-      current.resize(sizeVer, 0);
+      PImage current = loadImage("player/dead" + i + ".png");
       dead.add(current);
     }
+=======
+
+  Player(int xcor, int ycor) {
+    super(xcor, ycor, "player");
+>>>>>>> newpeter
   }
 
   void move() {
@@ -67,6 +68,7 @@ class Player extends Creature {
     }
   }
 
+<<<<<<< HEAD
   void update(int dir) {
     if (dir == 0) {
       if (walk) {
@@ -101,6 +103,14 @@ class Player extends Creature {
   }
 
   Bomb drop() {
+<<<<<<< HEAD
     return new Bomb((xcor+resting.width/2)/48 * 48, (ycor+resting.height-5)/48 * 48, range);
+=======
+    return new Bomb(xcor/48 * 48, ycor/48 * 48, range);
+=======
+  void drop() {
+    Bomb a = new Bomb(xcor, ycor, range);
+>>>>>>> newpeter
+>>>>>>> b428a9e01aa3bffbb33156a9ad0c7f6ea725380a
   }
 }
