@@ -1,5 +1,6 @@
 class Player extends Creature {
   int numBombs;
+<<<<<<< HEAD
   int speed = 3;
   float frame = 0.0;
   boolean walk = true;
@@ -40,6 +41,11 @@ class Player extends Creature {
       PImage current = loadImage("player/dead" + i + ".png");
       dead.add(current);
     }
+=======
+
+  Player(int xcor, int ycor) {
+    super(xcor, ycor, "player");
+>>>>>>> newpeter
   }
 
   void move() {
@@ -62,6 +68,7 @@ class Player extends Creature {
     }
   }
 
+<<<<<<< HEAD
   void update(int dir) {
     if (dir == 0) {
       if (walk) {
@@ -97,5 +104,9 @@ class Player extends Creature {
 
   Bomb drop() {
     return new Bomb(xcor/48 * 48, ycor/48 * 48, range);
+=======
+  void drop() {
+    Bomb a = new Bomb(xcor, ycor, range);
+>>>>>>> newpeter
   }
 }
