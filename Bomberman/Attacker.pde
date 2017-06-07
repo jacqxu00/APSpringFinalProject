@@ -5,11 +5,18 @@ int rand = 0;
   //MAKE SURE THAT ATTAACKERS DON'T SPAWN RIGHT NEXT TO PLAYER
   Attacker(int xcor, int ycor) {
     super(xcor, ycor, "attacker");
+    speed = 2;
   }
   
   void move() {
-    //slower random rate? 
+    //slower random rate?
+    if (count == 0) {
     rand = (int) random(4);
+    }
     update(rand);
+    count++;
+    if (count >= 50) {
+      count = 0;
+    }
   }
 }
