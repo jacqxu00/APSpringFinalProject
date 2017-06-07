@@ -24,11 +24,11 @@ class Player extends Creature {
       image(resting, xcor, ycor);
     }
   }
-
-<<<<<<< HEAD
+  
   Bomb drop() {
     return new Bomb(xcor/48 * 48, ycor/48 * 48, range);
-=======
+  }
+  
   void update(int dir) {
     if (dir == 0) {
       if (walk) {
@@ -60,10 +60,5 @@ class Player extends Creature {
     if (frame >= 7) {
       frame = 0;
     }
-  }
-
-  Bomb drop() {
-    return new Bomb((xcor+resting.width/2)/48 * 48, (ycor+resting.height-5)/48 * 48, range);
->>>>>>> master
   }
 }
