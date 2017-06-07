@@ -48,10 +48,10 @@ class Map {
     }
   }
 
-  void check(Player player) {
+  void check(Creature creature) {
     for (int r = 0; r < grid.length; r++) {
       for (int c = 0; c < grid[r].length; c++) {
-        grid[r][c].check(player);
+        grid[r][c].check(creature);
       }
     }
   }
