@@ -21,18 +21,18 @@ class Bomb {
   }
 
   void explodeFire() {
-    if (time >= 2) {
+    if (time >= 2000) {
       //figure out how to progress
       center = new Fire(xcor, ycor, false);
       for (int i = 1; i <= range; i++) {
-        boolean moment = false;
+        boolean end = false;
         if (i == range) {
-          moment = true;
+          end = true;
         }
-        fire[0][i-1] = new Fire(xcor+50*i, ycor+50*i, moment);
-        fire[1][i-1] = new Fire(xcor+50*i, ycor-50*i, moment);
-        fire[2][i-1] = new Fire(xcor-50*i, ycor+50*i, moment);
-        fire[3][i-1] = new Fire(xcor-50*i, ycor-50*i, moment);
+        fire[0][i-1] = new Fire(xcor+50*i, ycor+50*i, end);
+        fire[1][i-1] = new Fire(xcor+50*i, ycor-50*i, end);
+        fire[2][i-1] = new Fire(xcor-50*i, ycor+50*i, end);
+        fire[3][i-1] = new Fire(xcor-50*i, ycor-50*i, end);
       }
     }
   }
