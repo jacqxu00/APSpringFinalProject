@@ -13,7 +13,7 @@ class Bomb {
     this.xcor = xcor;
     this.ycor = ycor;
     for (int i = 0; i < 3; i++) {
-      PImage current = loadImage("bomb" + i + ".png");
+      PImage current = loadImage("bomb/bomb" + i + ".png");
       bomb.add(current);
     }
     fire = new Fire[4][range];

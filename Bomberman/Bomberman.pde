@@ -25,15 +25,15 @@ void draw() {
   //temp
   //this is for the "3d" aspect dealing with image overlaps
   if (main.ycor < attacker.ycor) {
-    //main.move();
-    //map.check(main);
-    attacker.move();
-    map.check(attacker);
+    main.move();
+    map.check(main);
+    //attacker.move();
+    //map.check(attacker);
   } else {
-    attacker.move();
-    map.check(attacker);
-    //main.move();
-    //map.check(main);
+    //attacker.move();
+    //map.check(attacker);
+    main.move();
+    map.check(main);
   }
 }
 
