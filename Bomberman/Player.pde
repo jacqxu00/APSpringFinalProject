@@ -1,6 +1,5 @@
 class Player extends Creature {
   int numBombs;
-<<<<<<< HEAD
   int speed = 3;
   float frame = 0.0;
   boolean walk = true;
@@ -10,8 +9,7 @@ class Player extends Creature {
   int range;
 
   Player(int xcor, int ycor, int range) {
-    this.xcor = xcor;
-    this.ycor = ycor;
+    super(xcor, ycor, "player");
     this.range = range;
     down = new ArrayList<PImage>();
     right = new ArrayList<PImage>();
@@ -41,11 +39,10 @@ class Player extends Creature {
       PImage current = loadImage("player/dead" + i + ".png");
       dead.add(current);
     }
-=======
+  }
 
   Player(int xcor, int ycor) {
     super(xcor, ycor, "player");
->>>>>>> newpeter
   }
 
   void move() {
@@ -68,7 +65,6 @@ class Player extends Creature {
     }
   }
 
-<<<<<<< HEAD
   void update(int dir) {
     if (dir == 0) {
       if (walk) {
@@ -103,14 +99,6 @@ class Player extends Creature {
   }
 
   Bomb drop() {
-<<<<<<< HEAD
     return new Bomb((xcor+resting.width/2)/48 * 48, (ycor+resting.height-5)/48 * 48, range);
-=======
-    return new Bomb(xcor/48 * 48, ycor/48 * 48, range);
-=======
-  void drop() {
-    Bomb a = new Bomb(xcor, ycor, range);
->>>>>>> newpeter
->>>>>>> b428a9e01aa3bffbb33156a9ad0c7f6ea725380a
   }
 }
