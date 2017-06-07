@@ -101,6 +101,6 @@ class Player extends Creature {
   }
 
   Bomb drop() {
-    return new Bomb(xcor/48 * 48, ycor/48 * 48, range);
+    return new Bomb((xcor+resting.width/2)/48 * 48, (ycor+resting.height-5)/48 * 48, range);
   }
 }
