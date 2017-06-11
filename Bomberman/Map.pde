@@ -90,7 +90,6 @@ class Map {
   }
 
   boolean checkAttack(int rPlay, int cPlay, int rAttack, int cAttack) {
-    //fix
     return (rPlay/48 * 48 == rAttack/48 * 48 && cPlay/48 * 48 == cAttack/48 * 48) || 
     ((rPlay + 48)/48 * 48 == rAttack/48 * 48 && (cPlay + 48)/48 * 48 == cAttack/48 * 48);
   }
@@ -137,6 +136,10 @@ class Map {
       }
     }
     //bombing a brick
+  }
+  
+  boolean checkClear() {
+    return attackers.size() == 0;
   }
 
   void gameOver() {

@@ -22,7 +22,15 @@ void draw() {
     attacker.move();
     map.check(attacker);
   }
+  
+  checkClear();
 }
 
 void gameOver() {
+}
+
+void checkClear() {
+  if (map.checkClear()) {
+    map = new Map(level + 10);
+  }
 }
