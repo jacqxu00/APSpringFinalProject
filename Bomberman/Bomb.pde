@@ -21,7 +21,10 @@ class Bomb {
   }
 
   void explodeFire() {
-    if (time >= 2000) {
+    if (time < 2000) {
+      display();
+    }
+    else {
       //figure out how to progress
       center = new Fire(xcor, ycor, false);
       for (int i = 1; i <= range; i++) {

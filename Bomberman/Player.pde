@@ -1,8 +1,12 @@
 class Player extends Creature {
   int numBombs;
+  ArrayList<Bomb> bombs;
+
 
   Player(int xcor, int ycor) {
     super(xcor, ycor, "player");
+    numBombs = 1;
+    bombs = new ArrayList<Bomb>();
   }
 
   void move() {
@@ -24,11 +28,13 @@ class Player extends Creature {
       image(resting, xcor, ycor);
     }
   }
-  
-  Bomb drop() {
-    return new Bomb(xcor/48 * 48, ycor/48 * 48, range);
+
+   void drop() {
+    if (bombs.size() < numBombs) {
+      bombs.add(new Bomb(xcor/48 * 48, ycor/48 * 48, range));
+    }
   }
-  
+
   void update(int dir) {
     if (dir == 0) {
       if (walk) {

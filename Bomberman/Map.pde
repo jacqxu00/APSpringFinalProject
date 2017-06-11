@@ -3,7 +3,6 @@ class Map {
   int level;
   Portal portal;
   ArrayList<Attacker> attackers;
-  ArrayList<Bomb> bombs;
   ArrayList<Block> bricks;
   ArrayList<Fire> LofFire;
   ArrayList<Block> grasses;
@@ -13,6 +12,7 @@ class Map {
     bricks = new ArrayList<Block>();
     grasses = new ArrayList<Block>();
     attackers = new ArrayList<Attacker>();
+    LofFire = new ArrayList<Fire>();
     grid = new Block[15][13];
     for (int r = 0; r < grid.length; r++) {
       for (int c = 0; c < grid[0].length; c++) {
@@ -64,11 +64,20 @@ class Map {
     portal = new Portal(bricks.get(iPortal).xcor, bricks.get(iPortal).ycor);
   }
 
-  void display() {
+  void display(Player p) {
     for (int r = 0; r < grid.length; r++) {
       for (int c = 0; c < grid[r].length; c++) {
         grid[r][c].display();
       }
+    }
+    for (Attacker a : attackers) {
+      a.move();
+    }
+    if (grid[portal.ycor/48][portal.xcor/48].type == 0) {
+      //PETER draw portal at the spot;
+    }
+    for (Bomb b : p.bombs) {
+      p.display();
     }
   }
 
@@ -98,33 +107,35 @@ class Map {
     return ans;
   }
 
-  void changes() {
+  void changes(Player p) {
     for (Attacker a : attackers) {
       if (checkAttack(main.xcor, main.ycor, a.xcor, a.ycor)) {
         noLoop();
         gameOver();
       }
     }
-    for (Bomb b : bombs) {
-      for (int r = 0; r < b.fire.length; r++) {
-        for (int c = 0; c < b.fire[0].length; c++) {
-          if (grid[r][c].type == 3 || grid[r][c].type == 2) {
-            r++;
-            c=0;
-          } else {
-            LofFire.add(b.fire[r][c]);
+    if (p.bombs.size()>0) {
+      for (Bomb b : p.bombs) {
+        for (int r = 0; r < b.fire.length; r++) {
+          for (int c = 0; c < b.fire[0].length; c++) {
+            if (grid[r][c].type == 3 || grid[r][c].type == 2) {
+              r++;
+              c=0;
+            } else {
+              LofFire.add(b.fire[r][c]);
+            }
           }
         }
-      }
-      for (Fire f : LofFire) {
-        if (checkDeath(main.xcor,main.ycor,f.xcor,f.ycor)) {
-          noLoop();
-          gameOver();
-        }
-        for (Attacker a : attackers) {
-          if (checkDeath(a.xcor,a.ycor,f.xcor,f.ycor)) {
-            //die animation
-            a = null;
+        for (Fire f : LofFire) {
+          if (checkDeath(main.xcor, main.ycor, f.xcor, f.ycor)) {
+            noLoop();
+            gameOver();
+          }
+          for (Attacker a : attackers) {
+            if (checkDeath(a.xcor, a.ycor, f.xcor, f.ycor)) {
+              //die animation
+              a = null;
+            }
           }
         }
       }
@@ -133,5 +144,7 @@ class Map {
   }
 
   void gameOver() {
+    clear();
+    //change the screen to gameover
   }
 }

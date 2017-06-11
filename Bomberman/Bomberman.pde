@@ -3,7 +3,6 @@ int range;
 Map map;
 Player main;
 Attacker attacker;
-Bomb bomb;
 
 void setup() {
   level = 1;
@@ -14,12 +13,12 @@ void setup() {
 
   //temp
   attacker = new Attacker(48*5, 48*7);
-  bomb = new Bomb(48*7, 48*7, 1);
 }
 
 void draw() {
-  map.display();
-  bomb.display();
+  map.display(main);
+  map.changes(main);
+  //bomb.display();
   
   //temp
   //this is for the "3d" aspect dealing with image overlaps

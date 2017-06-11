@@ -28,13 +28,15 @@ class Attacker extends Creature {
   //  steps--;
   
   void move() {
-    //slower random rate?
+    //control movement rate later
+    // PETER make sure the feet are not bouncing up and down
+    // PETER and that the attackers are spawned so the feet are lower on the green block
     if (count == 0) {
     rand = (int) random(4);
     }
-    update(rand);
+    update(1);
     count++;
-    if (count >= 50) {
+    if (count >= 48) {
       count = 0;
     }
   }
