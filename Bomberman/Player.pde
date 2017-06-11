@@ -31,7 +31,7 @@ class Player extends Creature {
 
    void drop() {
     if (bombs.size() < numBombs) {
-      bombs.add(new Bomb(xcor/48 * 48, ycor/48 * 48, range));
+      bombs.add(new Bomb(xcor/48 * 48, (ycor+48)/48 * 48, range));
     }
   }
 

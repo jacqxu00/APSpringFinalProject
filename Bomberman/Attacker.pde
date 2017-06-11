@@ -34,7 +34,7 @@ class Attacker extends Creature {
     if (count == 0) {
     rand = (int) random(4);
     }
-    update(1);
+    update(rand); //PETER regarding above (feet are lower) change rand to 1 and youll see what i mean
     count++;
     if (count >= 48) {
       count = 0;

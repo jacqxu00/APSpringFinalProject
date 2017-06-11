@@ -73,11 +73,11 @@ class Map {
     for (Attacker a : attackers) {
       a.move();
     }
-    if (grid[portal.ycor/48][portal.xcor/48].type == 0) {
+    if (grid[portal.xcor/48][portal.ycor/48].type == 0) {
       //PETER draw portal at the spot;
     }
     for (Bomb b : p.bombs) {
-      p.display();
+      b.display();
     }
   }
 
