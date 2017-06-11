@@ -91,7 +91,8 @@ class Map {
 
   boolean checkAttack(int rPlay, int cPlay, int rAttack, int cAttack) {
     //fix
-    return Math.abs(rPlay - rAttack) <= 48 && Math.abs(cPlay - cAttack) <= 48;
+    return (rPlay/48 * 48 == rAttack/48 * 48 && cPlay/48 * 48 == cAttack/48 * 48) || 
+    ((rPlay + 48)/48 * 48 == rAttack/48 * 48 && (cPlay + 48)/48 * 48 == cAttack/48 * 48);
   }
 
   String bricks() {
@@ -104,7 +105,7 @@ class Map {
 
   void changes(Player p) {
     for (Attacker a : attackers) {
-      if (checkAttack(main.xcor, main.ycor, a.xcor, a.ycor)) {
+      if (checkAttack(main.xcor, main.ycor + p.resting.height, a.xcor, a.ycor + p.resting.height)) {
         noLoop();
         gameOver();
       }
@@ -122,12 +123,12 @@ class Map {
           }
         }
         for (Fire f : LofFire) {
-          if (checkDeath(main.xcor, main.ycor, f.xcor, f.ycor)) {
+          if (checkDeath(main.xcor, main.ycor + p.resting.height, f.xcor, f.ycor)) {
             noLoop();
             gameOver();
           }
           for (Attacker a : attackers) {
-            if (checkDeath(a.xcor, a.ycor, f.xcor, f.ycor)) {
+            if (checkDeath(a.xcor, a.ycor + p.resting.height, f.xcor, f.ycor)) {
               //die animation
               a = null;
             }
