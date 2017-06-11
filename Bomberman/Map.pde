@@ -48,14 +48,13 @@ class Map {
     if (Apercentage > 25) {
       Apercentage = 25;
     }
-    for (int r = 0; r < grid.length; r++) {
-      for (int c = 0; c < grid[0].length; c++) {
-        if (c <= 4) {
-          c = 5;
-        }
-        int Atest = (int) random(100);
-        if (Atest <= Apercentage) {
-          attackers.add(new Attacker(c*48, r*48));
+    for (int r = 1; r < grid[0].length - 1; r++) {
+      for (int c = 1; c < grid.length - 1; c++) {
+        if (grid[c][r].type == 0 && r >= 4 && c >= 4) {
+          int Atest = (int) random(100);
+          if (Atest <= Apercentage) {
+            attackers.add(new Attacker(c*48, r*48 - 48));
+          }
         }
       }
     }
