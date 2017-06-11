@@ -44,7 +44,7 @@ class Map {
         }
       }
     }
-    int Apercentage = 10 + level/2;
+    int Apercentage = 5 + level/2;
     if (Apercentage > 25) {
       Apercentage = 25;
     }
@@ -59,7 +59,6 @@ class Map {
         }
       }
     }
-    //System.out.println(bricks());
     int iPortal = (int) random(bricks.size());
     portal = new Portal(bricks.get(iPortal).xcor, bricks.get(iPortal).ycor);
   }
@@ -69,9 +68,6 @@ class Map {
       for (int c = 0; c < grid[r].length; c++) {
         grid[r][c].display();
       }
-    }
-    for (Attacker a : attackers) {
-      a.move();
     }
     if (grid[portal.xcor/48][portal.ycor/48].type == 0) {
       //PETER draw portal at the spot;
