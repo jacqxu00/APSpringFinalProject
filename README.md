@@ -8,6 +8,7 @@ Spring Final Project by Peter Lee and Jacqueline Xu <hr>
 <p>4. Use arrow keys to move the main character</p>
 <p>5. Use space bar to drop bombs</p>
 <p>6. Kill all the monsters!</p>
+<hr>
 
 
 <b>FEATURES</b>
