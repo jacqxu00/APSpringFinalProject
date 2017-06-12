@@ -100,4 +100,8 @@ class Player extends Creature {
     fires.add(fireUp);
     fires.add(fireDown);
   }
+  
+  void die() {
+    image(dead.get(0), xcor, ycor);
+  }
 }

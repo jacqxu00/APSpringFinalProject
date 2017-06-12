@@ -77,6 +77,8 @@ class Map {
   }
 
   void check(Creature creature) {
+    int row = (creature.ycor + creature.resting.height)/48;
+    int col = (creature.xcor + creature.resting.width/2)/48;
     for (int r = 0; r < grid.length; r++) {
       for (int c = 0; c < grid[r].length; c++) {
         grid[r][c].check(creature);
@@ -91,7 +93,7 @@ class Map {
 
   boolean checkAttack(int rPlay, int cPlay, int rAttack, int cAttack) {
     return (rPlay/48 * 48 == rAttack/48 * 48 && cPlay/48 * 48 == cAttack/48 * 48) || 
-    ((rPlay + 48)/48 * 48 == rAttack/48 * 48 && (cPlay + 48)/48 * 48 == cAttack/48 * 48);
+      ((rPlay + 77)/48 * 48 == rAttack/48 * 48 && (cPlay + 77)/48 * 48 == cAttack/48 * 48);
   }
 
   String bricks() {
@@ -105,6 +107,7 @@ class Map {
   void changes(Player p) {
     for (Attacker a : attackers) {
       if (checkAttack(main.xcor, main.ycor + p.resting.height, a.xcor, a.ycor + p.resting.height)) {
+        p.die();
         noLoop();
         gameOver();
       }
@@ -137,7 +140,7 @@ class Map {
     }
     //bombing a brick
   }
-  
+
   boolean checkClear() {
     return attackers.size() == 0;
   }

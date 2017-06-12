@@ -22,7 +22,6 @@ void draw() {
     attacker.move();
     map.check(attacker);
   }
-  
   checkClear();
 }
 

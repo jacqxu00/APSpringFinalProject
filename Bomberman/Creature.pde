@@ -1,6 +1,6 @@
 abstract class Creature {
   int xcor, ycor, speed;
-  float frame = 0.0;
+  float frame = 0.0, count = 0.0;
   boolean walk = true;
   PImage resting;
   ArrayList<PImage> down, right, up, left, dead;
@@ -16,24 +16,24 @@ abstract class Creature {
     dead = new ArrayList<PImage>();
 
     //adding all sprites to its respective arraylists
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 8; i++) {
       PImage current = loadImage(type + "/down" + i + ".png");
       down.add(current);
     }
     resting = down.get(0);
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 8; i++) {
       PImage current = loadImage(type + "/right" + i + ".png");
       right.add(current);
     }
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 8; i++) {
       PImage current = loadImage(type + "/up" + i + ".png");
       up.add(current);
     }
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 8; i++) {
       PImage current = loadImage(type + "/left" + i + ".png");
       left.add(current);
     }
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
       PImage current = loadImage(type + "/dead" + i + ".png");
       dead.add(current);
     }
@@ -70,5 +70,12 @@ abstract class Creature {
     if (frame >= 7) {
       frame = 0;
     }
+  }
+  
+  void die() {
+    if (count < 4) {
+      image(dead.get((int)count), xcor, ycor);
+    }
+    count += 0.175;
   }
 }
