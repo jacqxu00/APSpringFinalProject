@@ -19,7 +19,7 @@ Spring Final Project by Peter Lee and Jacqueline Xu <hr>
 <p>6/3/17 - Random placement of brick walls</p>
 <p>6/4/17 - Bomberman can move around successfully with animation</p>
 <p>6/6/17 - Wall detection: Bomberman won't walk into walls</p>
-<p>6/11/17 - Bomb animation and exploding animation</p>
+<p>6/11/17 - Bomb animation and exploding</p>
 <hr>
 
 <b>FUTURE UPDATES</b>
@@ -31,7 +31,9 @@ Spring Final Project by Peter Lee and Jacqueline Xu <hr>
 
 <b>BUGS</b>
 <p>Walking into a corner of a wall will sometimes lock the main character in place</p>
-<p>Solution: Reboot</p>
+<p> Solution: Reboot</p>
+<p>Explosion animation doesn't quite work</p>
+<p> Solution: N/A</p>
 
 
 
