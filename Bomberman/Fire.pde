@@ -1,13 +1,13 @@
 class Fire {
   int xcor, ycor, strength, dir;
-  boolean end;
+  int type;
   int moment = 1;
 
-  Fire (int xcor, int ycor, boolean end) {
-    //dir = 0 = center, 1 = right, 2 = left, 3 = up, 4 = down
+  Fire (int xcor, int ycor, int type) {
+    //type: 0 = end, 1 = standard, 2 = block explode, 3 = center
     this.xcor = xcor;
     this.ycor = ycor;
-    this.end = end;
+    this.type = type;
   }
 
   void burst() {

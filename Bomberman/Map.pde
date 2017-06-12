@@ -71,10 +71,8 @@ class Map {
     if (grid[portal.xcor/48][portal.ycor/48].type == 0) {
       //PETER draw portal at the spot;
     }
-    for (Bomb b : p.bombs) {
-      b.display();
-    }
   }
+
 
   void check(Creature creature) {
     int row = (creature.ycor + creature.resting.height)/48;
@@ -93,7 +91,11 @@ class Map {
 
   boolean checkAttack(int rPlay, int cPlay, int rAttack, int cAttack) {
     return (rPlay/48 * 48 == rAttack/48 * 48 && cPlay/48 * 48 == cAttack/48 * 48) || 
+<<<<<<< HEAD
       ((rPlay + 77)/48 * 48 == rAttack/48 * 48 && (cPlay + 77)/48 * 48 == cAttack/48 * 48);
+=======
+      ((rPlay + 48)/48 * 48 == rAttack/48 * 48 && (cPlay + 48)/48 * 48 == cAttack/48 * 48);
+>>>>>>> master
   }
 
   String bricks() {
@@ -114,15 +116,68 @@ class Map {
     }
     if (p.bombs.size()>0) {
       for (Bomb b : p.bombs) {
-        for (int r = 0; r < b.fire.length; r++) {
-          for (int c = 0; c < b.fire[0].length; c++) {
-            if (grid[r][c].type == 3 || grid[r][c].type == 2) {
-              r++;
-              c=0;
-            } else {
-              LofFire.add(b.fire[r][c]);
-            }
+        b.display();
+        long newTime = millis();
+        //System.out.println(newTime);
+        //System.out.println("boom");
+        b.center = new Fire(b.xcor, b.ycor, 3);
+        LofFire.add(b.center);
+        for (int i = 1; i <= b.range; i++) {
+          boolean up = true;
+          boolean right = true;
+          boolean down = true;
+          boolean left = true;
+          boolean end = false;
+          if (i == b.range) {
+            end = true;
           }
+          if (up && (grid[(b.ycor-48*i)/48][b.xcor/48].type == 1 ||  grid[(b.ycor-48*i)/48][b.xcor/48].type == 2)) {
+            b.fire[3][i-1] = new Fire(b.xcor, b.ycor-50*i, 2);
+            LofFire.add(b.fire[3][i-1]);
+            up = false;
+          } else if (up && !(end)) {
+            b.fire[3][i-1] = new Fire(b.xcor, b.ycor-50*i, 1);
+            LofFire.add(b.fire[3][i-1]);
+          } else if (up) {
+            b.fire[3][i-1] = new Fire(b.xcor, b.ycor-50*i, 0);
+            LofFire.add(b.fire[3][i-1]);
+          } 
+          if (down && (grid[(b.ycor+48*i)/48][b.xcor/48].type == 1 ||  grid[(b.ycor+48*i)/48][b.xcor/48].type == 2)) {
+            b.fire[2][i-1] = new Fire(b.xcor, b.ycor+48*i, 2);
+            LofFire.add(b.fire[2][i-1]);
+            down = false;
+          } else if (down && !(end)) {
+            b.fire[2][i-1] = new Fire(b.xcor, b.ycor+48*i, 1);
+            LofFire.add(b.fire[2][i-1]);
+          } else if (down) {
+            b.fire[2][i-1] = new Fire(b.xcor, b.ycor+48*i, 0);
+            LofFire.add(b.fire[2][i-1]);
+          }
+          if (right && (grid[b.ycor/48][(b.xcor+48*i)/48].type == 1 ||  grid[(b.ycor)/48][(b.xcor+48*i)/48].type == 2)) {
+            b.fire[0][i-1] = new Fire(b.xcor+48*i, b.ycor, 2); //right
+            LofFire.add(b.fire[0][i-1]);
+            right = false;
+          } else if (right && !(end)) {
+            b.fire[0][i-1] = new Fire(b.xcor+48*i, b.ycor, 1);
+            LofFire.add(b.fire[0][i-1]);
+          } else if (right) {
+            b.fire[0][i-1] = new Fire(b.xcor+48*i, b.ycor, 0);
+            LofFire.add(b.fire[0][i-1]);
+          }
+          if (left && (grid[b.ycor/48][(b.xcor-48*i)/48].type == 1 ||  grid[b.ycor/48][(b.xcor-48*i)/48].type == 2)) {
+            b.fire[1][i-1] = new Fire(b.xcor-48*i, b.ycor, 2); //left
+            LofFire.add(b.fire[1][i-1]);
+            left = false;
+          } else if (left && !(end)) {
+            b.fire[1][i-1] = new Fire(b.xcor-48*i, b.ycor, 1);
+            LofFire.add(b.fire[1][i-1]);
+          } else if (left) {
+            b.fire[1][i-1] = new Fire(b.xcor-48*i, b.ycor, 0);
+            LofFire.add(b.fire[1][i-1]);
+          }
+        }
+        if (newTime - b.time >= 2000) {
+          //PETER fire types are in fire class
         }
         for (Fire f : LofFire) {
           if (checkDeath(main.xcor, main.ycor + p.resting.height, f.xcor, f.ycor)) {
@@ -131,7 +186,7 @@ class Map {
           }
           for (Attacker a : attackers) {
             if (checkDeath(a.xcor, a.ycor + p.resting.height, f.xcor, f.ycor)) {
-              //die animation
+              //PETER die animation for attacker
               a = null;
             }
           }
