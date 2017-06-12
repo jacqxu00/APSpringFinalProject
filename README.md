@@ -1,5 +1,8 @@
 # APSpringFinalProject
 Spring Final Project by Peter Lee and Jacqueline Xu <hr>
+<b>About</b>
+<p>This is a clone of SNES Super Bomberman 5</p>
+<p>Sprite credits go to https://www.spriters-resource.com/snes/sbomber5/</p>
 
 <b>How To Play</b>
 <p>1. Install all files</p>
@@ -18,6 +21,12 @@ Spring Final Project by Peter Lee and Jacqueline Xu <hr>
 <p>6/6/17 - Wall detection: Bomberman won't walk into walls</p>
 <p>6/11/17 - Bomb animation and exploding animation</p>
 <hr>
+
+<b>FUTURE UPDATES</b>
+<p>Items</p>
+<p>More character choices</p>
+<p>More enemies</p>
+<p>More maps</p>
 
 <b>BUGS</b>
 <p>Walking into a corner of a wall will sometimes lock the main character in place</p>
