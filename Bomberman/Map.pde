@@ -90,12 +90,7 @@ class Map {
   }
 
   boolean checkAttack(int rPlay, int cPlay, int rAttack, int cAttack) {
-    return (rPlay/48 * 48 == rAttack/48 * 48 && cPlay/48 * 48 == cAttack/48 * 48) || 
-<<<<<<< HEAD
-      ((rPlay + 77)/48 * 48 == rAttack/48 * 48 && (cPlay + 77)/48 * 48 == cAttack/48 * 48);
-=======
-      ((rPlay + 48)/48 * 48 == rAttack/48 * 48 && (cPlay + 48)/48 * 48 == cAttack/48 * 48);
->>>>>>> master
+    return ((rPlay + 77)/48 * 48 == rAttack/48 * 48 && (cPlay + 77)/48 * 48 == cAttack/48 * 48);
   }
 
   String bricks() {
