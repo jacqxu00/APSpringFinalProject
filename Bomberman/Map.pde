@@ -97,13 +97,13 @@ class Map {
     return (rPlay/48 * 48 == rAttack/48 * 48 && cPlay/48 * 48 == cAttack/48 * 48);
   }
 
-  String bricks() {
-    String ans = "";
-    for (Block a : bricks) {
-      ans+= "("+a.xcor/48+","+a.ycor/48+")";
-    }
-    return ans;
-  }
+  //String bricks() {
+  //  String ans = "";
+  //  for (Block a : bricks) {
+  //    ans+= "("+a.xcor/48+","+a.ycor/48+")";
+  //  }
+  //  return ans;
+  //}
 
   void changes(Player p) {
     for (Attacker a : attackers) {
@@ -115,7 +115,12 @@ class Map {
     }
     if (p.bombs.size() > 0) {
       for (Bomb b : p.bombs) {
+        grid[b.ycor/48][b.xcor/48].type = 0;
+        float curTime = System.currentTimeMillis(); //PETER trying to wait but idt this is working
         b.display();
+        if (System.currentTimeMillis() - curTime >= 1000) { //PETER and here prob
+          display(p);
+        }
         for (Fire f : b.LofFire) {
             if (checkDeath(main.xcor, main.ycor + p.resting.height, f.xcor, f.ycor)) {
               noLoop();

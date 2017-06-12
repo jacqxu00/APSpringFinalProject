@@ -2,7 +2,6 @@ class Fire {
   int xcor, ycor, strength, dir;
   int type;
   float frame = 0.0;
-
   ArrayList<PImage[][]> fires;
   ArrayList<PImage> mine;
 

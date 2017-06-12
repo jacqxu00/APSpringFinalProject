@@ -22,13 +22,10 @@ void draw() {
     attacker.move(map);
     map.check(attacker);
     for (Bomb bomb : main.bombs) {
-    bomb.check(attacker);
-  }
+      bomb.check(attacker);
+    }
   }
   checkClear();
-}
-
-void gameOver() {
 }
 
 void checkClear() {
