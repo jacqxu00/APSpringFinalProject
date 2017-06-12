@@ -21,6 +21,9 @@ void draw() {
   for (Attacker attacker : map.attackers) {
     attacker.move();
     map.check(attacker);
+    for (Bomb bomb : main.bombs) {
+    bomb.check(attacker);
+  }
   }
   checkClear();
 }

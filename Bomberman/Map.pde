@@ -123,75 +123,75 @@ class Map {
         //System.out.println("boom");
         b.center = new Fire(b.xcor, b.ycor, 3);
         LofFire.add(b.center);
-        for (int i = 1; i <= b.range; i++) {
-          boolean up = true;
-          boolean right = true;
-          boolean down = true;
-          boolean left = true;
-          boolean end = false;
-          if (i == b.range) {
-            end = true;
-          }
-          if (up && (grid[(b.ycor-48*i)/48][b.xcor/48].type == 1 ||  grid[(b.ycor-48*i)/48][b.xcor/48].type == 2)) {
-            b.fire[3][i-1] = new Fire(b.xcor, b.ycor-50*i, 2);
-            LofFire.add(b.fire[3][i-1]);
-            up = false;
-          } else if (up && !(end)) {
-            b.fire[3][i-1] = new Fire(b.xcor, b.ycor-50*i, 1);
-            LofFire.add(b.fire[3][i-1]);
-          } else if (up) {
-            b.fire[3][i-1] = new Fire(b.xcor, b.ycor-50*i, 0);
-            LofFire.add(b.fire[3][i-1]);
-          } 
-          if (down && (grid[(b.ycor+48*i)/48][b.xcor/48].type == 1 ||  grid[(b.ycor+48*i)/48][b.xcor/48].type == 2)) {
-            b.fire[2][i-1] = new Fire(b.xcor, b.ycor+48*i, 2);
-            LofFire.add(b.fire[2][i-1]);
-            down = false;
-          } else if (down && !(end)) {
-            b.fire[2][i-1] = new Fire(b.xcor, b.ycor+48*i, 1);
-            LofFire.add(b.fire[2][i-1]);
-          } else if (down) {
-            b.fire[2][i-1] = new Fire(b.xcor, b.ycor+48*i, 0);
-            LofFire.add(b.fire[2][i-1]);
-          }
-          if (right && (grid[b.ycor/48][(b.xcor+48*i)/48].type == 1 ||  grid[(b.ycor)/48][(b.xcor+48*i)/48].type == 2)) {
-            b.fire[0][i-1] = new Fire(b.xcor+48*i, b.ycor, 2); //right
-            LofFire.add(b.fire[0][i-1]);
-            right = false;
-          } else if (right && !(end)) {
-            b.fire[0][i-1] = new Fire(b.xcor+48*i, b.ycor, 1);
-            LofFire.add(b.fire[0][i-1]);
-          } else if (right) {
-            b.fire[0][i-1] = new Fire(b.xcor+48*i, b.ycor, 0);
-            LofFire.add(b.fire[0][i-1]);
-          }
-          if (left && (grid[b.ycor/48][(b.xcor-48*i)/48].type == 1 ||  grid[b.ycor/48][(b.xcor-48*i)/48].type == 2)) {
-            b.fire[1][i-1] = new Fire(b.xcor-48*i, b.ycor, 2); //left
-            LofFire.add(b.fire[1][i-1]);
-            left = false;
-          } else if (left && !(end)) {
-            b.fire[1][i-1] = new Fire(b.xcor-48*i, b.ycor, 1);
-            LofFire.add(b.fire[1][i-1]);
-          } else if (left) {
-            b.fire[1][i-1] = new Fire(b.xcor-48*i, b.ycor, 0);
-            LofFire.add(b.fire[1][i-1]);
-          }
-        }
-        if (newTime - b.time >= 2000) {
-          //PETER fire types are in fire class
-        }
-        for (Fire f : LofFire) {
-          if (checkDeath(main.xcor, main.ycor + p.resting.height, f.xcor, f.ycor)) {
-            noLoop();
-            gameOver();
-          }
-          for (Attacker a : attackers) {
-            if (checkDeath(a.xcor, a.ycor + p.resting.height, f.xcor, f.ycor)) {
-              a.die();
-              a = null;
-            }
-          }
-        }
+        //for (int i = 1; i <= b.range; i++) {
+        //  boolean up = true;
+        //  boolean right = true;
+        //  boolean down = true;
+        //  boolean left = true;
+        //  boolean end = false;
+        //  if (i == b.range) {
+        //    end = true;
+        //  }
+        //  if (up && (grid[(b.ycor-48*i)/48][b.xcor/48].type == 1 ||  grid[(b.ycor-48*i)/48][b.xcor/48].type == 2)) {
+        //    b.fire[3][i-1] = new Fire(b.xcor, b.ycor-50*i, 2);
+        //    LofFire.add(b.fire[3][i-1]);
+        //    up = false;
+        //  } else if (up && !(end)) {
+        //    b.fire[3][i-1] = new Fire(b.xcor, b.ycor-50*i, 1);
+        //    LofFire.add(b.fire[3][i-1]);
+        //  } else if (up) {
+        //    b.fire[3][i-1] = new Fire(b.xcor, b.ycor-50*i, 0);
+        //    LofFire.add(b.fire[3][i-1]);
+        //  } 
+        //  if (down && (grid[(b.ycor+48*i)/48][b.xcor/48].type == 1 ||  grid[(b.ycor+48*i)/48][b.xcor/48].type == 2)) {
+        //    b.fire[2][i-1] = new Fire(b.xcor, b.ycor+48*i, 2);
+        //    LofFire.add(b.fire[2][i-1]);
+        //    down = false;
+        //  } else if (down && !(end)) {
+        //    b.fire[2][i-1] = new Fire(b.xcor, b.ycor+48*i, 1);
+        //    LofFire.add(b.fire[2][i-1]);
+        //  } else if (down) {
+        //    b.fire[2][i-1] = new Fire(b.xcor, b.ycor+48*i, 0);
+        //    LofFire.add(b.fire[2][i-1]);
+        //  }
+        //  if (right && (grid[b.ycor/48][(b.xcor+48*i)/48].type == 1 ||  grid[(b.ycor)/48][(b.xcor+48*i)/48].type == 2)) {
+        //    b.fire[0][i-1] = new Fire(b.xcor+48*i, b.ycor, 2); //right
+        //    LofFire.add(b.fire[0][i-1]);
+        //    right = false;
+        //  } else if (right && !(end)) {
+        //    b.fire[0][i-1] = new Fire(b.xcor+48*i, b.ycor, 1);
+        //    LofFire.add(b.fire[0][i-1]);
+        //  } else if (right) {
+        //    b.fire[0][i-1] = new Fire(b.xcor+48*i, b.ycor, 0);
+        //    LofFire.add(b.fire[0][i-1]);
+        //  }
+        //  if (left && (grid[b.ycor/48][(b.xcor-48*i)/48].type == 1 ||  grid[b.ycor/48][(b.xcor-48*i)/48].type == 2)) {
+        //    b.fire[1][i-1] = new Fire(b.xcor-48*i, b.ycor, 2); //left
+        //    LofFire.add(b.fire[1][i-1]);
+        //    left = false;
+        //  } else if (left && !(end)) {
+        //    b.fire[1][i-1] = new Fire(b.xcor-48*i, b.ycor, 1);
+        //    LofFire.add(b.fire[1][i-1]);
+        //  } else if (left) {
+        //    b.fire[1][i-1] = new Fire(b.xcor-48*i, b.ycor, 0);
+        //    LofFire.add(b.fire[1][i-1]);
+        //  }
+        //}
+        //if (newTime - b.time >= 2000) {
+        //  //PETER fire types are in fire class
+        //}
+        //for (Fire f : LofFire) {
+        //  if (checkDeath(main.xcor, main.ycor + p.resting.height, f.xcor, f.ycor)) {
+        //    noLoop();
+        //    gameOver();
+        //  }
+        //  for (Attacker a : attackers) {
+        //    if (checkDeath(a.xcor, a.ycor + p.resting.height, f.xcor, f.ycor)) {
+        //      a.die();
+        //      a = null;
+        //    }
+        //  }
+        //}
       }
     }
     //bombing a brick
