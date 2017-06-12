@@ -1,4 +1,4 @@
-abstract class Creature {
+  abstract class Creature {
   int xcor, ycor, speed;
   float frame = 0.0;
   boolean walk = true;
