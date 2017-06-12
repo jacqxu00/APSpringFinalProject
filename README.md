@@ -1,5 +1,5 @@
 # APSpringFinalProject
-Spring Final Project by Peter Lee and Jacqueline Xu
+Spring Final Project by Peter Lee and Jacqueline Xu <hr>
 
 <b>FEATURES</b>
 <p>6/3/17 - Random placement of brick walls</p>
