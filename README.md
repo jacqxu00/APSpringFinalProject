@@ -3,6 +3,7 @@ Spring Final Project by Peter Lee and Jacqueline Xu <hr>
 <b>About</b>
 <p>This is a clone of SNES Super Bomberman 5</p>
 <p>Sprite credits go to https://www.spriters-resource.com/snes/sbomber5/</p>
+<hr>
 
 <b>How To Play</b>
 <p>1. Install all files</p>
@@ -27,6 +28,7 @@ Spring Final Project by Peter Lee and Jacqueline Xu <hr>
 <p>More character choices</p>
 <p>More enemies</p>
 <p>More maps</p>
+<hr>
 
 <b>BUGS</b>
 <p>Walking into a corner of a wall will sometimes lock the main character in place</p>
