@@ -1,7 +1,7 @@
 # APSpringFinalProject
 Spring Final Project by Peter Lee and Jacqueline Xu <hr>
 <b>About</b>
-<p>This is a clone of SNES Super Bomberman 5</p>
+<p>This is a clone of Super Bomberman 5 (SNES)</p>
 <p>Sprite credits go to https://www.spriters-resource.com/snes/sbomber5/</p>
 <hr>
 
