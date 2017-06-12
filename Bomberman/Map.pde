@@ -186,7 +186,7 @@ class Map {
           }
           for (Attacker a : attackers) {
             if (checkDeath(a.xcor, a.ycor + p.resting.height, f.xcor, f.ycor)) {
-              //PETER die animation for attacker
+              a.die();
               a = null;
             }
           }
