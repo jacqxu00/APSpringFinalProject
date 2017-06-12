@@ -44,22 +44,20 @@ class Map {
         }
       }
     }
-    int Apercentage = 10 + level/2;
+    int Apercentage = 5 + level/2;
     if (Apercentage > 25) {
       Apercentage = 25;
     }
-    for (int r = 0; r < grid.length; r++) {
-      for (int c = 0; c < grid[0].length; c++) {
-        if (c <= 4) {
-          c = 5;
-        }
-        int Atest = (int) random(100);
-        if (Atest <= Apercentage) {
-          attackers.add(new Attacker(c*48, r*48));
+    for (int r = 1; r < grid[0].length - 1; r++) {
+      for (int c = 1; c < grid.length - 1; c++) {
+        if (grid[c][r].type == 0 && r >= 4 && c >= 4) {
+          int Atest = (int) random(100);
+          if (Atest <= Apercentage) {
+            attackers.add(new Attacker(c*48, r*48 - 48));
+          }
         }
       }
     }
-    //System.out.println(bricks());
     int iPortal = (int) random(bricks.size());
     portal = new Portal(bricks.get(iPortal).xcor, bricks.get(iPortal).ycor);
   }
@@ -69,9 +67,6 @@ class Map {
       for (int c = 0; c < grid[r].length; c++) {
         grid[r][c].display();
       }
-    }
-    for (Attacker a : attackers) {
-      a.move();
     }
     if (grid[portal.xcor/48][portal.ycor/48].type == 0) {
       //PETER draw portal at the spot;
@@ -95,8 +90,8 @@ class Map {
   }
 
   boolean checkAttack(int rPlay, int cPlay, int rAttack, int cAttack) {
-    //fix
-    return Math.abs(rPlay - rAttack) <= 48 && Math.abs(cPlay - cAttack) <= 48;
+    return (rPlay/48 * 48 == rAttack/48 * 48 && cPlay/48 * 48 == cAttack/48 * 48) || 
+    ((rPlay + 48)/48 * 48 == rAttack/48 * 48 && (cPlay + 48)/48 * 48 == cAttack/48 * 48);
   }
 
   String bricks() {
@@ -109,7 +104,7 @@ class Map {
 
   void changes(Player p) {
     for (Attacker a : attackers) {
-      if (checkAttack(main.xcor, main.ycor, a.xcor, a.ycor)) {
+      if (checkAttack(main.xcor, main.ycor + p.resting.height, a.xcor, a.ycor + p.resting.height)) {
         noLoop();
         gameOver();
       }
@@ -127,12 +122,12 @@ class Map {
           }
         }
         for (Fire f : LofFire) {
-          if (checkDeath(main.xcor, main.ycor, f.xcor, f.ycor)) {
+          if (checkDeath(main.xcor, main.ycor + p.resting.height, f.xcor, f.ycor)) {
             noLoop();
             gameOver();
           }
           for (Attacker a : attackers) {
-            if (checkDeath(a.xcor, a.ycor, f.xcor, f.ycor)) {
+            if (checkDeath(a.xcor, a.ycor + p.resting.height, f.xcor, f.ycor)) {
               //die animation
               a = null;
             }
@@ -141,6 +136,10 @@ class Map {
       }
     }
     //bombing a brick
+  }
+  
+  boolean checkClear() {
+    return attackers.size() == 0;
   }
 
   void gameOver() {
