@@ -41,9 +41,11 @@ class Bomb {
       if (i == range) {
         end = true;
       }
-      if (up && (grid[(ycor-48*i)/48][xcor/48].type == 1 ||  grid[(ycor-48*i)/48][xcor/48].type == 2)) {
-        fire[2][i-1] = new Fire(xcor, ycor-48*i, 1, 3, fires);
-        LofFire.add(fire[2][i-1]);
+      if (up && checkCor((ycor-48*i)/48, xcor/48) && (grid[(ycor-48*i)/48][xcor/48].type == 3 ||  grid[(ycor-48*i)/48][xcor/48].type == 2)) {
+        up = false;
+      } else if (up && checkCor((ycor-48*i)/48, xcor/48) && (grid[(ycor-48*i)/48][xcor/48].type == 1)) {
+        fire[3][i-1] = new Fire(xcor, ycor-48*i, 1, 4, fires);
+        LofFire.add(fire[3][i-1]);
         up = false;
       } else if (up && !(end)) {
         fire[2][i-1] = new Fire(xcor, ycor-48*i, 1, 3, fires);
@@ -52,8 +54,10 @@ class Bomb {
         fire[2][i-1] = new Fire(xcor, ycor-48*i, 2, 3, fires);
         LofFire.add(fire[2][i-1]);
       } 
-      if (down && (grid[(ycor+48*i)/48][xcor/48].type == 1 ||  grid[(ycor+48*i)/48][xcor/48].type == 2)) {
-        fire[3][i-1] = new Fire(xcor, ycor+48*i, 1, 4, fires);
+      if (down && checkCor((ycor+48*i)/48, xcor/48) && (grid[(ycor+48*i)/48][xcor/48].type == 3 ||  grid[(ycor+48*i)/48][xcor/48].type == 2)) {
+        down = false;
+      } else if (down && checkCor((ycor+48*i)/48, xcor/48) && (grid[(ycor+48*i)/48][xcor/48].type == 3)) {
+        fire[3][i-1] = new Fire(xcor, ycor-48*i, 1, 4, fires);
         LofFire.add(fire[3][i-1]);
         down = false;
       } else if (down && !(end)) {
@@ -63,7 +67,10 @@ class Bomb {
         fire[3][i-1] = new Fire(xcor, ycor+48*i, 2, 4, fires);
         LofFire.add(fire[3][i-1]);
       }
-      if (right && (grid[ycor/48][(xcor+48*i)/48].type == 1 ||  grid[(ycor)/48][(xcor+48*i)/48].type == 2)) {
+      if (right && checkCor(ycor/48, (xcor+48*i)/48) && (grid[ycor/48][(xcor+48*i)/48].type == 3 ||  grid[(ycor)/48][(xcor+48*i)/48].type == 2)) {
+        right = false;
+        System.out.println(right);
+      } else if (right && checkCor(ycor/48, (xcor+48*i)/48) && (grid[ycor/48][(xcor+48*i)/48].type == 1)) {
         fire[0][i-1] = new Fire(xcor+48*i, ycor, 1, 1, fires); //right
         LofFire.add(fire[0][i-1]);
         right = false;
@@ -74,7 +81,9 @@ class Bomb {
         fire[0][i-1] = new Fire(xcor+48*i, ycor, 2, 1, fires);
         LofFire.add(fire[0][i-1]);
       }
-      if (left && (grid[ycor/48][(xcor-48*i)/48].type == 1 ||  grid[ycor/48][(xcor-48*i)/48].type == 2)) {
+      if (left && checkCor(ycor/48, (xcor-48*i)/48) && (grid[ycor/48][(xcor-48*i)/48].type == 3 ||  grid[ycor/48][(xcor-48*i)/48].type == 2)) {
+        left = false;
+      } else if (left && checkCor(ycor/48, (xcor-48*i)/48) && (grid[ycor/48][(xcor-48*i)/48].type == 1)) {
         fire[1][i-1] = new Fire(xcor-48*i, ycor, 1, 2, fires); //left
         LofFire.add(fire[1][i-1]);
         left = false;
@@ -86,6 +95,10 @@ class Bomb {
         LofFire.add(fire[1][i-1]);
       }
     }
+  }
+
+  boolean checkCor(int y, int x) {
+    return y >= 0 && y <= 12 && x >= 0 && x <= 16;
   }
 
   void display() {

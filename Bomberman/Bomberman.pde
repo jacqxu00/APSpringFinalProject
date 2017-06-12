@@ -19,7 +19,7 @@ void draw() {
   main.move();
   map.check(main);
   for (Attacker attacker : map.attackers) {
-    attacker.move();
+    attacker.move(map);
     map.check(attacker);
     for (Bomb bomb : main.bombs) {
     bomb.check(attacker);
