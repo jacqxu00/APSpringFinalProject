@@ -1,26 +1,42 @@
 class Fire {
   int xcor, ycor, strength, dir;
   int type;
-  int moment = 1;
-  PImage[][] fires;
-  ArrayList<PImage> strengths;
+  float frame = 0.0;
+  boolean fireOn;
 
-  Fire (int xcor, int ycor, int type) {
-    //type: 0 = end, 1 = standard, 2 = block explode, 3 = center
+  ArrayList<PImage[][]> fires;
+  ArrayList<PImage> mine;
+
+  Fire (int xcor, int ycor, int type, int dir, ArrayList<PImage[][]> fires) {
+    //type: 0 = center, 1 = standard, 2 = end, 3 = block explode
     this.xcor = xcor;
     this.ycor = ycor;
     this.type = type;
     this.fires = fires;
-    strengths = new ArrayList<PImage>();
+    mine = new ArrayList<PImage>();
+    if (type == 3) {
+      for (int i = 0; i < 5; i++) {
+        mine.add(loadImage("bomb/break" + i + ".png"));
+      }
+    } else if (type == 0) {
+      for (int i = 0; i < 4; i++) {
+        mine.add(fires.get(dir)[i][type]);
+      }
+    } else {
+      for (int i = 0; i < 4; i++) {
+        mine.add(fires.get(dir)[i][type - 1]);
+      }
+    }
   }
 
-  void burst() {
-    if (moment == 1) {
-      //display
-    } else if (moment == 2) {
-      //display
-    } else if (moment == 3) {
-      //display
+  void display() {
+    image(mine.get((int)frame), xcor, ycor);
+    if (frame < 3.5) {
+      frame += 0.5;
     }
+  }
+
+  void setFire() {
+    fireOn = true;
   }
 }

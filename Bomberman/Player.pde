@@ -4,7 +4,7 @@ class Player extends Creature {
   ArrayList<PImage[][]> fires;
 
   Player(int xcor, int ycor) {
-    super(xcor, ycor, "player");
+    super(xcor, ycor, "player", map);
     numBombs = 1;
     bombs = new ArrayList<Bomb>();
     fires = new ArrayList<PImage[][]>();
@@ -33,7 +33,7 @@ class Player extends Creature {
 
   void drop() {
       if (bombs.size() < numBombs) {
-        bombs.add(new Bomb(xcor/48 * 48, (ycor+48)/48 * 48, range, fires));
+        bombs.add(new Bomb(xcor/48 * 48, (ycor+48)/48 * 48, 2, fires, map));
       }
   }
 
@@ -71,16 +71,16 @@ class Player extends Creature {
   }
 
   void loadFires() {
-    PImage[][] fireCenter = new PImage[3][3];
-    for (int i = 0; i < 3; i++) {
-      fireCenter[i][i] = loadImage("bomb/firecenter" + i + "0.png");
-    }
-    PImage[][] fireRight = new PImage[3][2];
-    PImage[][] fireLeft = new PImage[3][2];
-    PImage[][] fireUp = new PImage[3][2];
-    PImage[][] fireDown = new PImage[3][2];
+    PImage[][] fireCenter = new PImage[4][3];
     for (int i = 0; i < 4; i++) {
-      for (int j = 0; j < 3; j++) {
+      fireCenter[i][0] = loadImage("bomb/firecenter" + i + "0.png");
+    }
+    PImage[][] fireRight = new PImage[4][2];
+    PImage[][] fireLeft = new PImage[4][2];
+    PImage[][] fireUp = new PImage[4][2];
+    PImage[][] fireDown = new PImage[4][2];
+    for (int i = 0; i < 4; i++) {
+      for (int j = 0; j < 4; j++) {
         for (int h = 0; h < 2; h++) {
           if (i == 0) {
             fireRight[j][h] = loadImage("bomb/fireright" + j + h + ".png");

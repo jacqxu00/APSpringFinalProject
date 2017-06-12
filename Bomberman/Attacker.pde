@@ -4,7 +4,7 @@ class Attacker extends Creature {
   int rand = 0;
 
   Attacker(int xcor, int ycor) {
-    super(xcor, ycor + 5, "attacker");
+    super(xcor, ycor + 5, "attacker", map);
     speed = 1;
   }
 

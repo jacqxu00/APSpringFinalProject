@@ -4,8 +4,9 @@
   boolean walk = true;
   PImage resting;
   ArrayList<PImage> down, right, up, left, dead;
+  Block[][] grid;
   
-  public Creature(int xcor, int ycor, String type) {
+  public Creature(int xcor, int ycor, String type, Map map) {
     this.xcor = xcor;
     this.ycor = ycor;
     speed = 3;
