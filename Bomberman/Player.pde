@@ -32,9 +32,9 @@ class Player extends Creature {
   }
 
   void drop() {
-    if (bombs.size() < numBombs) {
-      bombs.add(new Bomb(xcor/48 * 48, (ycor+48)/48 * 48, range));
-    }
+      if (bombs.size() < numBombs) {
+        bombs.add(new Bomb(xcor/48 * 48, (ycor+48)/48 * 48, range, fires));
+      }
   }
 
   void update(int dir) {
@@ -100,7 +100,7 @@ class Player extends Creature {
     fires.add(fireUp);
     fires.add(fireDown);
   }
-  
+
   void die() {
     image(dead.get(0), xcor, ycor);
   }

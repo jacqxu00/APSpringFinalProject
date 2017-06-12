@@ -7,7 +7,7 @@ class Bomb {
   float frame = 0.0;
   ArrayList<PImage> bomb = new ArrayList<PImage>();
 
-  Bomb (int xcor, int ycor, int range) {
+  Bomb (int xcor, int ycor, int range, ArrayList<PImage[][]> fires) {
     time = millis();
     //System.out.println(time);
     this.range = range;
@@ -41,7 +41,6 @@ class Bomb {
   }
 
   void display() {
-    //System.out.println("boom");
     image(bomb.get((int)frame), xcor, ycor);
     frame += 0.1;
     if (frame >= 3) {

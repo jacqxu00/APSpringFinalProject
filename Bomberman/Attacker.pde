@@ -5,7 +5,7 @@ class Attacker extends Creature {
 
   Attacker(int xcor, int ycor) {
     super(xcor, ycor + 5, "attacker");
-    speed = 2;
+    speed = 1;
   }
 
   void move() {

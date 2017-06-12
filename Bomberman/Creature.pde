@@ -75,8 +75,6 @@
   void die() {
     if (count < 4) {
       image(dead.get((int)count), xcor, ycor);
-    } else {
-      
     }
     count += 0.175;
   }
