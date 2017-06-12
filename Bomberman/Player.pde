@@ -33,7 +33,7 @@ class Player extends Creature {
 
   void drop() {
       if (bombs.size() < numBombs) {
-        bombs.add(new Bomb(xcor/48 * 48, (ycor+48)/48 * 48, 2, fires, map));
+        bombs.add(new Bomb((xcor + resting.width / 2)/48 * 48, (ycor+48)/48 * 48, 2, fires, map));
       }
   }
 

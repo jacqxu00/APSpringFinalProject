@@ -117,11 +117,9 @@ class Map {
       for (Bomb b : p.bombs) {
         b.display();
         for (Fire f : b.LofFire) {
-          if (f.fireOn) {
             if (checkDeath(main.xcor, main.ycor + p.resting.height, f.xcor, f.ycor)) {
               noLoop();
               gameOver();
-            }
           }
           for (Attacker a : attackers) {
             if (checkDeath(a.xcor, a.ycor + p.resting.height, f.xcor, f.ycor)) {

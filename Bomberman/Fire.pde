@@ -2,7 +2,6 @@ class Fire {
   int xcor, ycor, strength, dir;
   int type;
   float frame = 0.0;
-  boolean fireOn;
 
   ArrayList<PImage[][]> fires;
   ArrayList<PImage> mine;
@@ -34,9 +33,5 @@ class Fire {
     if (frame < 3.5) {
       frame += 0.5;
     }
-  }
-
-  void setFire() {
-    fireOn = true;
   }
 }

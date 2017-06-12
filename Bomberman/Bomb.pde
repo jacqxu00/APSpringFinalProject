@@ -42,14 +42,14 @@ class Bomb {
         end = true;
       }
       if (up && (grid[(ycor-48*i)/48][xcor/48].type == 1 ||  grid[(ycor-48*i)/48][xcor/48].type == 2)) {
-        fire[2][i-1] = new Fire(xcor, ycor-50*i, 1, 3, fires);
+        fire[2][i-1] = new Fire(xcor, ycor-48*i, 1, 3, fires);
         LofFire.add(fire[2][i-1]);
         up = false;
       } else if (up && !(end)) {
-        fire[2][i-1] = new Fire(xcor, ycor-50*i, 1, 3, fires);
+        fire[2][i-1] = new Fire(xcor, ycor-48*i, 1, 3, fires);
         LofFire.add(fire[2][i-1]);
       } else if (up) {
-        fire[2][i-1] = new Fire(xcor, ycor-50*i, 2, 3, fires);
+        fire[2][i-1] = new Fire(xcor, ycor-48*i, 2, 3, fires);
         LofFire.add(fire[2][i-1]);
       } 
       if (down && (grid[(ycor+48*i)/48][xcor/48].type == 1 ||  grid[(ycor+48*i)/48][xcor/48].type == 2)) {
@@ -86,9 +86,6 @@ class Bomb {
         LofFire.add(fire[1][i-1]);
       }
     }
-    for (Fire fire : LofFire) {
-      fire.display();
-    }
   }
 
   void display() {
@@ -101,12 +98,13 @@ class Bomb {
     if (count > 3) {
       explode();
     }
+    for (Fire fire : LofFire) {
+      fire.display();
+    }
   }
 
   void check(Attacker attacker) {
     PImage current = bomb.get((int)frame);
-    println(attacker.ycor);
-    println(attacker .resting.height);
     float bottomY = attacker.ycor + attacker.resting.height;
     float rightX = attacker.xcor + attacker.resting.width;
     boolean leftFootX = attacker.xcor >= xcor && attacker.xcor <= xcor + current.width;
