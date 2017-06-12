@@ -77,9 +77,15 @@ class Map {
   void check(Creature creature) {
     int row = (creature.ycor + creature.resting.height)/48;
     int col = (creature.xcor + creature.resting.width/2)/48;
-    for (int r = 0; r < grid.length; r++) {
-      for (int c = 0; c < grid[r].length; c++) {
-        grid[r][c].check(creature);
+    for (int i = -1; i < 2; i++) {
+      for (int j = -1; j < 2; j++) {
+        int r = row + i;
+        int c = col + j;
+        if (r > -1 && c > -1 && r < grid[0].length && c < grid.length) {
+          grid[c][r].check(creature);
+        } else {
+          grid[col][row].check(creature);
+        }
       }
     }
   }
@@ -90,7 +96,7 @@ class Map {
   }
 
   boolean checkAttack(int rPlay, int cPlay, int rAttack, int cAttack) {
-    return ((rPlay + 77)/48 * 48 == rAttack/48 * 48 && (cPlay + 77)/48 * 48 == cAttack/48 * 48);
+    return (rPlay/48 * 48 == rAttack/48 * 48 && cPlay/48 * 48 == cAttack/48 * 48);
   }
 
   String bricks() {

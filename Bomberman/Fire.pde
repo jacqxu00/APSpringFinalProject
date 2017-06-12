@@ -10,7 +10,6 @@ class Fire {
     this.ycor = ycor;
     this.type = type;
     fire = new ArrayList<PImage>();
-    
   }
 
   void burst() {
