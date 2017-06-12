@@ -31,9 +31,7 @@ Spring Final Project by Peter Lee and Jacqueline Xu <hr>
 
 <b>BUGS</b>
 <p>Walking into a corner of a wall will sometimes lock the main character in place</p>
-<p> Solution: Reboot</p>
 <p>Explosion animation doesn't quite work</p>
-<p> Solution: N/A</p>
 
 
 
