@@ -2,7 +2,6 @@ class Attacker extends Creature {
   int dir;
   ArrayList<Integer> moves;
   int count = 0;
-  int rand = 0;
   Block[][] grid;
   boolean deadEnd;
 
@@ -19,42 +18,16 @@ class Attacker extends Creature {
   }
 
   void move(Map map) {
-    //if (count == 0) {
-    //  rand = (int) random(4);
-    //}
-    //update(rand);
-    //count++;
-    //if (count >= 48) {
-    //  count = 0;
-    //}
     grid = map.grid; //PETER something about the grid checking cors is wrong i think
-    if (dir == 0 && grid[(ycor-48)/48][xcor/48].type != 0 || dir == 1 && grid[ycor/48][(xcor+48)/48].type != 0 ||
-    dir == 2 && grid[(ycor+48)/48][xcor/48].type != 0 || dir == 3 && grid[ycor/48][(xcor-48)/48].type != 0) {
-      rand = (int) random(4);
+    //System.out.println(dir+","+(xcor+24)/48+","+(ycor+40)/48);
+    //System.out.print("up " + (grid[(xcor+24)/48][(ycor+40-48)/48].type != 0));
+    //System.out.print(" right " + (grid[(xcor+24+48)/48][(ycor+40)/48].type != 0));
+    //System.out.print(" down " + (grid[(xcor+24)/48][(ycor+40+48)/48].type != 0));
+    //System.out.print(" left " + (grid[(xcor+24-48)/48][(ycor+40)/48].type != 0));
+    if (dir == 0 && grid[(xcor+24)/48][(ycor+74-48)/48].type != 0 || dir == 1 && grid[(xcor+6+48)/48][(ycor+70)/48].type != 0 ||
+      dir == 2 && grid[(xcor+24)/48][(ycor+32+48)/48].type != 0 || dir == 3 && grid[(xcor+42-48)/48][(ycor+70)/48].type != 0) {
+      dir = (int) random(4);
     }
-    update(rand);
-    //grid = map.grid;
-    //// PETER make sure the feet are not bouncing up and down
-    //if (dir == 0 && grid[(ycor-48)/48][xcor/48].type != 0 || dir == 1 && grid[ycor/48][(xcor+48)/48].type != 0 ||
-    //  dir == 2 && grid[(ycor+48)/48][xcor/48].type != 0 || dir == 3 && grid[ycor/48][(xcor-48)/48].type != 0) {
-    //  deadEnd = true;
-    //}
-    //if (deadEnd) {
-    //  if (grid[(ycor-48)/48][xcor/48].type == 0) {
-    //    moves.add(0);
-    //  }
-    //  if (grid[ycor/48][(xcor+48)/48].type == 0) {
-    //    moves.add(1);
-    //  }
-    //  if (grid[(ycor+48)/48][xcor/48].type == 0) {
-    //    moves.add(2);
-    //  }
-    //  if (grid[ycor/48][(xcor-48)/48].type == 0) {
-    //    moves.add(3);
-    //  }
-    //  rand = (int) random(moves.size());
-    //  update(moves.get(rand));
-    //  moves.clear();
-    //}
+    update(dir);
   }
 }

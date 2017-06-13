@@ -58,6 +58,8 @@ class Map {
     }
     int iPortal = (int) random(bricks.size());
     portal = new Portal(bricks.get(iPortal).xcor, bricks.get(iPortal).ycor);
+
+    System.out.println(portal.xcor/48+", "+portal.ycor/48);
   }
 
   void display(Player p) {
@@ -88,26 +90,21 @@ class Map {
     }
   }
 
-  boolean checkDeath(int rCreat, int cCreat, int rBomb, int cBomb) {
-    //double check where r c is for attacker make ame as player so in creature
-    return rCreat/48 * 48 == rBomb && cCreat/48 * 48 == cBomb;
-  }
-
   boolean checkAttack(int rPlay, int cPlay, int rAttack, int cAttack) {
-    return (rPlay/48 * 48 == rAttack/48 * 48 && cPlay/48 * 48 == cAttack/48 * 48);
+    return (Math.abs(rPlay-rAttack) <= 30  && Math.abs(cPlay-cAttack) <= 30);
   }
 
-  //String bricks() {
-  //  String ans = "";
-  //  for (Block a : bricks) {
-  //    ans+= "("+a.xcor/48+","+a.ycor/48+")";
-  //  }
-  //  return ans;
-  //}
+  String bricks() {
+    String ans = "";
+    for (Block a : bricks) {
+      ans+= "("+a.xcor/48+","+a.ycor/48+")";
+    }
+    return ans;
+  }
 
   void changes(Player p) {
     for (Attacker a : attackers) {
-      if (checkAttack(main.xcor, main.ycor + p.resting.height, a.xcor, a.ycor + p.resting.height)) {
+      if (checkAttack(main.xcor+24, main.ycor + 40, a.xcor+24, a.ycor + 40)) {
         p.die();
         noLoop();
         gameOver();
@@ -122,20 +119,26 @@ class Map {
           display(p);
         }
         for (Fire f : b.LofFire) {
-            if (checkDeath(main.xcor, main.ycor + p.resting.height, f.xcor, f.ycor)) {
-              noLoop();
-              gameOver();
+          grid[f.ycor/48][f.xcor/48].type = 0;
+          //System.out.print("("+f.xcor/48+", "+f.ycor/48+")");
+          if (checkAttack(main.xcor+24, main.ycor+ 40, f.xcor, f.ycor)) {
+            noLoop();
+            gameOver();
           }
           for (Attacker a : attackers) {
-            if (checkDeath(a.xcor, a.ycor + p.resting.height, f.xcor, f.ycor)) {
+            if (checkAttack(a.xcor+24, a.ycor + 40, f.xcor, f.ycor)) {
+              System.out.println("attacker death");
               a.die();
-              a = null;
+              //attackers.remove(a);
             }
           }
         }
       }
     }
-    //bombing a brick
+  }
+
+  boolean checkCor(int y, int x) {
+    return y >= 0 && y <= 12 && x >= 0 && x <= 16;
   }
 
   boolean checkClear() {
@@ -144,6 +147,11 @@ class Map {
 
   void gameOver() {
     clear();
-    //change the screen to gameover
+    PImage current = loadImage("gameover.jpg");
+    image(current, 0, 0);
+    textSize(24);
+    fill(#FF0066);
+    String s = "LEVEL: " + level;
+    text(s, 320, 280);
   }
 }

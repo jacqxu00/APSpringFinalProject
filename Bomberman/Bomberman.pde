@@ -32,6 +32,7 @@ void draw() {
 
 void checkClear() {
   if (map.checkClear()) {
-    map = new Map(level + 10);
+    level++;
+    map = new Map(level);
   }
 }
