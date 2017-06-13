@@ -108,7 +108,7 @@ class Bomb {
       frame = 0;
       count++;
     }
-    if (count > 3 && count < 3.5) {
+    if (count > 3 && count < 4.5) {
       explode();
     }
     for (Fire fire : LofFire) {
