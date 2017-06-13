@@ -3,6 +3,7 @@ int range;
 Map map;
 Player main;
 Attacker attacker;
+Fire fire;
 
 void setup() {
   level = 1;
@@ -10,6 +11,7 @@ void setup() {
   size(720, 624);
   map = new Map(level);
   main = new Player(50, 50);
+  fire = new Fire(width/2, height/2, 3, 1, main.fires);
 }
 
 void draw() {

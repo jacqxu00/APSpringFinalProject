@@ -44,8 +44,8 @@ class Bomb {
       if (up && checkCor((ycor-48*i)/48, xcor/48) && (grid[(ycor-48*i)/48][xcor/48].type == 3 ||  grid[(ycor-48*i)/48][xcor/48].type == 2)) {
         up = false;
       } else if (up && checkCor((ycor-48*i)/48, xcor/48) && (grid[(ycor-48*i)/48][xcor/48].type == 1)) {
-        fire[3][i-1] = new Fire(xcor, ycor-48*i, 1, 4, fires);
-        LofFire.add(fire[3][i-1]);
+        fire[2][i-1] = new Fire(xcor, ycor-48*i, 1, 4, fires);
+        LofFire.add(fire[2][i-1]);
         up = false;
       } else if (up && !(end)) {
         fire[2][i-1] = new Fire(xcor, ycor-48*i, 1, 3, fires);
@@ -108,7 +108,7 @@ class Bomb {
       frame = 0;
       count++;
     }
-    if (count > 3) {
+    if (count > 3 && count < 3.5) {
       explode();
     }
     for (Fire fire : LofFire) {

@@ -14,7 +14,7 @@ class Fire {
     mine = new ArrayList<PImage>();
     if (type == 3) {
       for (int i = 0; i < 5; i++) {
-        mine.add(loadImage("bomb/break" + i + ".png"));
+        mine.add(loadImage("break" + i + ".png"));
       }
     } else if (type == 0) {
       for (int i = 0; i < 4; i++) {
@@ -28,9 +28,10 @@ class Fire {
   }
 
   void display() {
+    println(frame);
     image(mine.get((int)frame), xcor, ycor);
     if (frame < 3.5) {
-      frame += 0.5;
+      frame += 0.15; 
     }
   }
 }
