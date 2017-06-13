@@ -32,12 +32,12 @@ class Bomb {
   void explode() {
     center = new Fire(xcor, ycor, 0, 0, fires);
     LofFire.add(center);
+    boolean up = true;
+    boolean right = true;
+    boolean down = true;
+    boolean left = true;
+    boolean end = false;
     for (int i = 1; i <= range; i++) {
-      boolean up = true;
-      boolean right = true;
-      boolean down = true;
-      boolean left = true;
-      boolean end = false;
       if (i == range) {
         end = true;
       }
@@ -47,10 +47,10 @@ class Bomb {
         fire[3][i-1] = new Fire(xcor, ycor-48*i, 1, 4, fires);
         LofFire.add(fire[3][i-1]);
         up = false;
-      } else if (up && !(end)) {
+      } else if (up && checkCor((ycor-48*i)/48, xcor/48) && !(end)) {
         fire[2][i-1] = new Fire(xcor, ycor-48*i, 1, 3, fires);
         LofFire.add(fire[2][i-1]);
-      } else if (up) {
+      } else if (up && checkCor((ycor-48*i)/48, xcor/48)) {
         fire[2][i-1] = new Fire(xcor, ycor-48*i, 2, 3, fires);
         LofFire.add(fire[2][i-1]);
       } 
@@ -60,10 +60,10 @@ class Bomb {
         fire[3][i-1] = new Fire(xcor, ycor-48*i, 1, 4, fires);
         LofFire.add(fire[3][i-1]);
         down = false;
-      } else if (down && !(end)) {
+      } else if (down && checkCor((ycor+48*i)/48, xcor/48) && !(end)) {
         fire[3][i-1] = new Fire(xcor, ycor+48*i, 1, 4, fires);
         LofFire.add(fire[3][i-1]);
-      } else if (down) {
+      } else if (down && checkCor((ycor+48*i)/48, xcor/48)) {
         fire[3][i-1] = new Fire(xcor, ycor+48*i, 2, 4, fires);
         LofFire.add(fire[3][i-1]);
       }
@@ -74,10 +74,10 @@ class Bomb {
         fire[0][i-1] = new Fire(xcor+48*i, ycor, 1, 1, fires); //right
         LofFire.add(fire[0][i-1]);
         right = false;
-      } else if (right && !(end)) {
+      } else if (right && checkCor(ycor/48, (xcor+48*i)/48) && !(end)) {
         fire[0][i-1] = new Fire(xcor+48*i, ycor, 1, 1, fires);
         LofFire.add(fire[0][i-1]);
-      } else if (right) {
+      } else if (right && checkCor(ycor/48, (xcor+48*i)/48)) {
         fire[0][i-1] = new Fire(xcor+48*i, ycor, 2, 1, fires);
         LofFire.add(fire[0][i-1]);
       }
@@ -87,10 +87,10 @@ class Bomb {
         fire[1][i-1] = new Fire(xcor-48*i, ycor, 1, 2, fires); //left
         LofFire.add(fire[1][i-1]);
         left = false;
-      } else if (left && !(end)) {
+      } else if (left  && checkCor(ycor/48, (xcor-48*i)/48) && !(end)) {
         fire[1][i-1] = new Fire(xcor-48*i, ycor, 1, 2, fires);
         LofFire.add(fire[1][i-1]);
-      } else if (left) {
+      } else if (left && checkCor(ycor/48, (xcor-48*i)/48)) {
         fire[1][i-1] = new Fire(xcor-48*i, ycor, 2, 2, fires);
         LofFire.add(fire[1][i-1]);
       }

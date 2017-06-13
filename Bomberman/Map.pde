@@ -58,6 +58,8 @@ class Map {
     }
     int iPortal = (int) random(bricks.size());
     portal = new Portal(bricks.get(iPortal).xcor, bricks.get(iPortal).ycor);
+
+    System.out.println(portal.xcor/48+", "+portal.ycor/48);
   }
 
   void display(Player p) {
@@ -117,20 +119,26 @@ class Map {
           display(p);
         }
         for (Fire f : b.LofFire) {
-          System.out.print("("+f.xcor/48+", "+f.ycor/48+")");
+          grid[f.ycor/48][f.xcor/48].type = 0;
+          //System.out.print("("+f.xcor/48+", "+f.ycor/48+")");
           if (checkAttack(main.xcor+24, main.ycor+ 40, f.xcor, f.ycor)) {
             noLoop();
             gameOver();
           }
           for (Attacker a : attackers) {
             if (checkAttack(a.xcor+24, a.ycor + 40, f.xcor, f.ycor)) {
+              System.out.println("attacker death");
               a.die();
-              a = null;
+              //attackers.remove(a);
             }
           }
         }
       }
     }
+  }
+
+  boolean checkCor(int y, int x) {
+    return y >= 0 && y <= 12 && x >= 0 && x <= 16;
   }
 
   boolean checkClear() {
