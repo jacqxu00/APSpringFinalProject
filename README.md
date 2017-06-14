@@ -1,11 +1,12 @@
 # APSpringFinalProject
-Spring Final Project by Peter Lee and Jacqueline Xu <hr>
-<b>ABOUT</b>
+Peter Lee and Jacqueline Xu
+
+<h2>About</h2>
 <p>Inspired by Super Bomberman 5 (SNES)</p>
-<p>Sprite credits go to https://www.spriters-resource.com/snes/sbomber5/</p>
+<p>Sprite credits go to <a href="https://www.spriters-resource.com/snes/sbomber5/"> </p>
 <hr>
 
-<b>HOW TO PLAY</b>
+<h2>How To Play</h2>
 <p>1. Install all files</p>
 <p>2. Run any pde files</p>
 <p>3. Press play</p>
@@ -15,26 +16,24 @@ Spring Final Project by Peter Lee and Jacqueline Xu <hr>
 <hr>
 
 
-<b>FEATURES</b>
-<p>6/3/17 - Random placement of brick walls</p>
-<p>6/4/17 - Bomberman can move around successfully with sprites</p>
-<p>6/6/17 - Wall detection: Bomberman won't walk into walls</p>
-<p>6/9/17 - Bomb detection: Bomberman and attackers won't walk through bombs</p>
-<p>6/11/17 - Bomb animation and exploding</p>
-<p>6/12/17 - Attacker movement: changes to random direction when it reaches dead end</p>
-<p>6/13/17 - Successful explosion: fires won't go through solid blocks and walls, and fires remove </p>
+<h2>Features</h2>
+<ul>
+<li>6/3/17 - Random placement of brick walls</li>
+<li>6/4/17 - Bomberman can move around successfully with sprites</li>
+<li>6/6/17 - Wall detection: Bomberman won't walk into walls</li>
+<li>6/9/17 - Bomb detection: Bomberman and attackers won't walk through bombs</li>
+<li>6/11/17 - Bomb animation and exploding</li>
+<li>6/12/17 - Attacker movement: changes to random direction when it reaches dead end</li>
+<li>6/13/17 - Successful explosion: fires won't go through solid blocks and walls, and fires remove </li>
+</ul>
 <hr>
 
-<b>FUTURE UPDATES</b>
-<p>Items</p>
-<p>Startup and Gameover page</p>
-<p>Levels and differences between levels</p>
-<hr>
-
-<b>BUGS</b>
-<p>Although the field is sort of "3D," the creatures are not always drawn so that the one in the front is displayed on top</p>
-<p>Specific situations may cause the creatures to get locked in place, unable to move</p>
-<p>Explosion animation doesn't quite refresh</p>
+<h2>Bugs</h2>
+<ul>
+<li>Although the field is sort of "3D," the creatures are not always drawn so that the one in the front is displayed on top</li>
+<li>Specific situations may cause the creatures to get locked in place, unable to move</li>
+<li>Explosion animation doesn't quite refresh</li>
+</ul>
 
 
 
