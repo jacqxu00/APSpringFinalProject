@@ -2,7 +2,7 @@ import java.util.*;
 
 class Map {
   Block[][] grid;
-  int level;
+  int level, count = 0;
   Portal portal;
   ArrayList<Attacker> attackers;
   ArrayList<Block> bricks;
@@ -134,7 +134,11 @@ class Map {
             }
           }
         }
+        count++;
+        if (count > 200) {
         i.remove();
+        count = 0;
+        }
         System.out.println(p.bombs.size());
       }
     }
