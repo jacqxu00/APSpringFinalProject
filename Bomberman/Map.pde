@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Map {
   Block[][] grid;
   int level;
@@ -111,28 +113,29 @@ class Map {
       }
     }
     if (p.bombs.size() > 0) {
-      for (Bomb b : p.bombs) {
-        grid[b.ycor/48][b.xcor/48].type = 0;
-        float curTime = System.currentTimeMillis(); //PETER trying to wait but idt this is working
+      Iterator<Bomb> i = p.bombs.iterator();
+      while(i.hasNext()) {
+        Bomb b = i.next();
         b.display();
-        if (System.currentTimeMillis() - curTime >= 1000) { //PETER and here prob
-          display(p);
-        }
         for (Fire f : b.LofFire) {
-          grid[f.ycor/48][f.xcor/48].type = 0;
+          grid[f.xcor/48][f.ycor/48].type = 0;
           //System.out.print("("+f.xcor/48+", "+f.ycor/48+")");
           if (checkAttack(main.xcor+24, main.ycor+ 40, f.xcor, f.ycor)) {
             noLoop();
             gameOver();
           }
-          for (Attacker a : attackers) {
+          Iterator<Attacker> j = attackers.iterator();
+          while(j.hasNext()) {
+            Attacker a = j.next();
             if (checkAttack(a.xcor+24, a.ycor + 40, f.xcor, f.ycor)) {
               System.out.println("attacker death");
               a.die();
-              //attackers.remove(a);
+              j.remove();
             }
           }
         }
+        i.remove();
+        System.out.println(p.bombs.size());
       }
     }
   }
