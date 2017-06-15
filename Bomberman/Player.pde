@@ -33,7 +33,7 @@ class Player extends Creature {
 
   void drop() {
       if (bombs.size() < numBombs) {
-        bombs.add(new Bomb((xcor + resting.width / 2)/48 * 48, (ycor+48)/48 * 48, 2, fires, map));
+        bombs.add(new Bomb((xcor+24)/48 * 48, (ycor+70)/48 * 48, 2, fires, map));
       }
   }
 
@@ -100,8 +100,8 @@ class Player extends Creature {
     fires.add(fireUp);
     fires.add(fireDown);
   }
-
-  void die() {
-    image(dead.get(0), xcor, ycor);
+  
+  void jump() {
+    //PETER can you do the animation
   }
 }

@@ -1,6 +1,7 @@
 import java.util.*;
 
 class Map {
+  boolean gameOver = false;
   Block[][] grid;
   int level, count = 0;
   Portal portal;
@@ -48,20 +49,23 @@ class Map {
     if (Apercentage > 25) {
       Apercentage = 25;
     }
-    for (int r = 1; r < grid[0].length - 1; r++) {
-      for (int c = 1; c < grid.length - 1; c++) {
-        if (grid[c][r].type == 0 && r >= 4 && c >= 4) {
-          int Atest = (int) random(100);
-          if (Atest <= Apercentage) {
-            attackers.add(new Attacker(c*48, r*48 - 48));
+    int attackNum = 0;
+    while (attackNum < 2) {
+      for (int r = 1; r < grid[0].length - 1; r++) {
+        for (int c = 1; c < grid.length - 1; c++) {
+          if (grid[c][r].type == 0 && r >= 4 && c >= 4) {
+            int Atest = (int) random(100);
+            if (Atest <= Apercentage && attackNum < 5) {
+              attackers.add(new Attacker(c*48, r*48 - 48));
+              attackNum++;
+            }
           }
         }
       }
+      int iPortal = (int) random(bricks.size());
+      portal = new Portal(bricks.get(iPortal).xcor, bricks.get(iPortal).ycor);
+      System.out.println(portal.xcor/48+", "+portal.ycor/48);
     }
-    int iPortal = (int) random(bricks.size());
-    portal = new Portal(bricks.get(iPortal).xcor, bricks.get(iPortal).ycor);
-
-    System.out.println(portal.xcor/48+", "+portal.ycor/48);
   }
 
   void display(Player p) {
@@ -71,8 +75,13 @@ class Map {
       }
     }
     if (grid[portal.xcor/48][portal.ycor/48].type == 0) {
-      //PETER draw portal at the spot;
+      PImage img = loadImage("portal.png");
+      image(img, portal.xcor, portal.ycor);
     }
+    textSize(30);
+    fill(#FFFFFF);
+    String s = "LEVEL: " + level;
+    text(s, 0, 0);
   }
 
 
@@ -105,41 +114,40 @@ class Map {
   }
 
   void changes(Player p) {
-    for (Attacker a : attackers) {
-      if (checkAttack(main.xcor+24, main.ycor + 40, a.xcor+24, a.ycor + 40)) {
+    Iterator<Attacker> h = attackers.iterator();
+    while (h.hasNext()) {
+      Attacker a = h.next();
+      if (checkAttack(p.xcor+24, p.ycor + 40, a.xcor+24, a.ycor + 40)) {
         p.die();
-        noLoop();
         gameOver();
       }
     }
     if (p.bombs.size() > 0) {
       Iterator<Bomb> i = p.bombs.iterator();
-      while(i.hasNext()) {
+      while (i.hasNext()) {
         Bomb b = i.next();
         b.display();
         for (Fire f : b.LofFire) {
           grid[f.xcor/48][f.ycor/48].type = 0;
           //System.out.print("("+f.xcor/48+", "+f.ycor/48+")");
-          if (checkAttack(main.xcor+24, main.ycor+ 40, f.xcor, f.ycor)) {
-            noLoop();
+          if (checkAttack(p.xcor+24, p.ycor+ 40, f.xcor+24, f.ycor+24)) {
+            p.die();
             gameOver();
           }
           Iterator<Attacker> j = attackers.iterator();
-          while(j.hasNext()) {
+          while (j.hasNext()) {
             Attacker a = j.next();
             if (checkAttack(a.xcor+24, a.ycor + 40, f.xcor, f.ycor)) {
-              System.out.println("attacker death");
               a.die();
               j.remove();
             }
           }
         }
         count++;
-        if (count > 200) {
-        i.remove();
-        count = 0;
+        if (count > 180) {
+          i.remove();
+          count = 0;
         }
-        System.out.println(p.bombs.size());
       }
     }
   }
@@ -148,11 +156,13 @@ class Map {
     return y >= 0 && y <= 12 && x >= 0 && x <= 16;
   }
 
-  boolean checkClear() {
-    return attackers.size() == 0;
+  boolean checkClear(Player p) {
+    return attackers.size() == 0 && (p.xcor+24)/48 == portal.xcor/48 && (p.ycor+70)/48 == portal.ycor/48;
   }
 
   void gameOver() {
+    gameOver = true;
+    noLoop();
     clear();
     PImage current = loadImage("gameover.jpg");
     image(current, 0, 0);

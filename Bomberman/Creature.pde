@@ -74,6 +74,7 @@
   }
   
   void die() {
+    //PETER idt this is working
     if (count < 4) {
       image(dead.get((int)count), xcor, ycor);
     }

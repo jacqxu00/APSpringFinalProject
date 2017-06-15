@@ -11,6 +11,7 @@ class Fire {
     this.ycor = ycor;
     this.type = type;
     this.fires = fires;
+    
     mine = new ArrayList<PImage>();
     if (type == 3) {
       for (int i = 0; i < 5; i++) {
@@ -28,7 +29,6 @@ class Fire {
   }
 
   void display() {
-    println(frame);
     image(mine.get((int)frame), xcor, ycor);
     if (frame < 3.5) {
       frame += 0.15; 
