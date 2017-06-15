@@ -24,7 +24,8 @@ Peter Lee and Jacqueline Xu
 <li>6/9/17 - Bomb detection: Bomberman and attackers won't walk through bombs</li>
 <li>6/11/17 - Bomb animation and exploding</li>
 <li>6/12/17 - Attacker movement: changes to random direction when it reaches dead end</li>
-<li>6/13/17 - Successful explosion: fires won't go through solid blocks and walls, and fires remove </li>
+<li>6/13/17 - Successful explosion: fires kill creatures </li>
+<li>6/15/17 - Portal successful, new level when player kills all monsters and reaches portal </li>
 </ul>
 <hr>
 
@@ -32,7 +33,8 @@ Peter Lee and Jacqueline Xu
 <ul>
 <li>Although the field is sort of "3D," the creatures are not always drawn so that the one in the front is displayed on top</li>
 <li>Specific situations may cause the creatures to get locked in place, unable to move</li>
-<li>Explosion animation doesn't quite refresh</li>
+<li>The monsters are not extremely "smart" when they reach a bomb they don't turn around</li>
+<li>Bombs explode for full range, even if the fire reaches a wall</li>
 </ul>
 
 
