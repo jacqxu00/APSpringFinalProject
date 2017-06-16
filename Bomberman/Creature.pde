@@ -1,12 +1,14 @@
-  abstract class Creature {
+abstract class Creature {
   int xcor, ycor, speed;
   float frame = 0.0, count = 0.0;
   boolean walk = true;
+  boolean alive;
   PImage resting;
   ArrayList<PImage> down, right, up, left, dead;
   Block[][] grid;
-  
+
   public Creature(int xcor, int ycor, String type, Map map) {
+    alive = true;
     this.xcor = xcor;
     this.ycor = ycor;
     speed = 3;
@@ -41,43 +43,46 @@
   }
 
   void update(int dir) {
-    if (dir == 0) {
-      if (walk) {
-        ycor -= speed;
+    if (alive) {
+      if (dir == 0) {
+        if (walk) {
+          ycor -= speed;
+        }
+        image(up.get((int)frame), xcor, ycor);
+        resting = up.get(0);
+      } else if (dir == 1) {
+        if (walk) {
+          xcor += speed;
+        }
+        image(right.get((int)frame), xcor, ycor);
+        resting = right.get(0);
+      } else if (dir == 2) {
+        if (walk) {
+          ycor += speed;
+        }
+        image(down.get((int)frame), xcor, ycor);
+        resting = down.get(0);
+      } else {
+        if (walk) {
+          xcor -= speed;
+        }
+        image(left.get((int)frame), xcor, ycor);
+        resting = left.get(0);
       }
-      image(up.get((int)frame), xcor, ycor);
-      resting = up.get(0);
-    } else if (dir == 1) {
-      if (walk) {
-        xcor += speed;
+      //this slows the animation down
+      frame += 0.175;
+      if (frame >= 7) {
+        frame = 0;
       }
-      image(right.get((int)frame), xcor, ycor);
-      resting = right.get(0);
-    } else if (dir == 2) {
-      if (walk) {
-        ycor += speed;
-      }
-      image(down.get((int)frame), xcor, ycor);
-      resting = down.get(0);
     } else {
-      if (walk) {
-        xcor -= speed;
-      }
-      image(left.get((int)frame), xcor, ycor);
-      resting = left.get(0);
-    }
-    //this slows the animation down
-    frame += 0.175;
-    if (frame >= 7) {
-      frame = 0;
-    }
-  }
-  
-  void die() {
-    //PETER idt this is working
-    if (count < 4) {
+      if (count < 4) {
       image(dead.get((int)count), xcor, ycor);
     }
     count += 0.175;
+    }
+  }
+
+  void die() {
+    alive = false;
   }
 }
