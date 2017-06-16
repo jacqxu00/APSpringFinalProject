@@ -1,4 +1,4 @@
-int level;
+int level, clearCount;
 int range;
 Map map;
 Player main;
@@ -12,6 +12,7 @@ void setup() {
   main = new Player(50, 50);
   map = new Map(level);
   fire = new Fire(width/2, height/2, 3, 1, main.fires);
+  clearCount = 0;
 }
 
 void draw() {
@@ -33,8 +34,14 @@ void draw() {
 
 void checkClear() {
   if (map.checkClear(main)) {
-    level++;
-    main = new Player(50, 50);
-    map = new Map(level);
+    if (clearCount < 110) {
+      main.jump();
+      clearCount++;
+    } else {
+      clearCount = 0;
+      level++;
+      main = new Player(50, 50);
+      map = new Map(level);
+    }
   }
 }

@@ -132,7 +132,6 @@ class Map {
           if (checkAttack(p.xcor+24, p.ycor+ 40, f.xcor+24, f.ycor+24)) {
             p.die();
             pDeathCount++;
-            println(pDeathCount);
             if (pDeathCount > 21) {
               gameOver();
             }
