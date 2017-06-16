@@ -3,7 +3,7 @@ import java.util.*;
 class Map {
   boolean gameOver = false;
   Block[][] grid;
-  int level, bombCount = 0, aDeathCount = 0, pDeathCount = 0;
+  int level, aDeathCount = 0, pDeathCount = 0;
   Portal portal;
   ArrayList<Attacker> attackers;
   ArrayList<Block> bricks;
@@ -149,10 +149,10 @@ class Map {
             }
           }
         }
-        bombCount++;
-        if (bombCount > 113) {
+        b.bombCount++;
+        if (b.bombCount > 113) {
           i.remove();
-          bombCount = 0;
+          b.bombCount = 0;
         }
       }
     }
