@@ -5,7 +5,6 @@ class Attacker extends Creature {
   Block[][] grid;
   boolean deadEnd, move;
 
-
   Attacker(int xcor, int ycor) {
     super(xcor, ycor + 5, "attacker", map);
     move = true;
@@ -20,12 +19,7 @@ class Attacker extends Creature {
 
   void move(Map map) {
     if (move) {
-      grid = map.grid; //PETER something about the grid checking cors is wrong i think
-      //System.out.println(dir+","+(xcor+24)/48+","+(ycor+40)/48);
-      //System.out.print("up " + (grid[(xcor+24)/48][(ycor+40-48)/48].type != 0));
-      //System.out.print(" right " + (grid[(xcor+24+48)/48][(ycor+40)/48].type != 0));
-      //System.out.print(" down " + (grid[(xcor+24)/48][(ycor+40+48)/48].type != 0));
-      //System.out.print(" left " + (grid[(xcor+24-48)/48][(ycor+40)/48].type != 0));
+      grid = map.grid;
       if (dir == 0 && grid[(xcor+24)/48][(ycor+74-48)/48].type != 0 || dir == 1 && grid[(xcor+6+48)/48][(ycor+70)/48].type != 0 ||
         dir == 2 && grid[(xcor+24)/48][(ycor+32+48)/48].type != 0 || dir == 3 && grid[(xcor+42-48)/48][(ycor+70)/48].type != 0) {
         dir = (int) random(4);

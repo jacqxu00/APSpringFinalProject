@@ -78,9 +78,9 @@ class Map {
       image(img, portal.xcor, portal.ycor);
     }
     textSize(30);
-    fill(#FFFFFF);
+    fill(0);
     String s = "LEVEL: " + level;
-    text(s, 0, 0);
+    text(s, 0, 30);
   }
 
 
