@@ -76,13 +76,14 @@ abstract class Creature {
       }
     } else {
       if (count < 4) {
-      image(dead.get((int)count), xcor, ycor);
-    }
-    count += 0.175;
+        image(dead.get((int)count), xcor, ycor);
+      }
+      count += 0.15;
     }
   }
 
   void die() {
     alive = false;
+    walk = false;
   }
 }

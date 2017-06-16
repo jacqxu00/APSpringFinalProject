@@ -3,7 +3,7 @@ import java.util.*;
 class Map {
   boolean gameOver = false;
   Block[][] grid;
-  int level, bombCount = 0, deathCount = 0;
+  int level, bombCount = 0, aDeathCount = 0, pDeathCount = 0;
   Portal portal;
   ArrayList<Attacker> attackers;
   ArrayList<Block> bricks;
@@ -67,7 +67,7 @@ class Map {
     }
   }
 
-  void display(Player p) {
+  void display() {
     for (int r = 0; r < grid.length; r++) {
       for (int c = 0; c < grid[r].length; c++) {
         grid[r][c].display();
@@ -131,17 +131,21 @@ class Map {
           //System.out.print("("+f.xcor/48+", "+f.ycor/48+")");
           if (checkAttack(p.xcor+24, p.ycor+ 40, f.xcor+24, f.ycor+24)) {
             p.die();
-            gameOver();
+            pDeathCount++;
+            println(pDeathCount);
+            if (pDeathCount > 21) {
+              gameOver();
+            }
           }
           Iterator<Attacker> j = attackers.iterator();
           while (j.hasNext()) {
             Attacker a = j.next();
             if (checkAttack(a.xcor+24, a.ycor + 40, f.xcor, f.ycor)) {
               a.die();
-              deathCount++;
-              if (deathCount > 100) {
+              aDeathCount++;
+              if (aDeathCount > 100) {
                 j.remove();
-                deathCount = 0;
+                aDeathCount = 0;
               }
             }
           }

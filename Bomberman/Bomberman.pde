@@ -15,7 +15,7 @@ void setup() {
 }
 
 void draw() {
-  map.display(main);
+  map.display();
   map.changes(main);
   if (!map.gameOver) {
     main.move();
