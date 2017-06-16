@@ -6,7 +6,4 @@ class Portal {
     this.ycor = ycor;
   }
 
-  void display() {
-    //when the block over it is bombed, png file of portal shown
-  }
 }
