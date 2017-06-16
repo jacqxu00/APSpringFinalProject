@@ -25,8 +25,8 @@ class Attacker extends Creature {
         dir = (int) random(4);
       }
       for (Bomb b : main.bombs) { //not working
-        if (dir == 0 && (xcor+24)/48 == b.xcor && (ycor+74-48)/48 == b.ycor || dir == 1 && (xcor+6+48)/48 == b.xcor && (ycor+70)/48 == b.ycor ||
-          dir == 2 && (xcor+24)/48 == b.xcor && (ycor+32+48)/48 == b.ycor || dir == 3 && (xcor+42-48)/48 == b.xcor && (ycor+70)/48 == b.ycor) {
+        if (dir == 0 && (xcor+24)/48 == b.xcor && (ycor+70-48)/48 == b.ycor || dir == 1 && (xcor+24+48)/48 == b.xcor && (ycor+70)/48 == b.ycor ||
+          dir == 2 && (xcor+24)/48 == b.xcor && (ycor+70+48)/48 == b.ycor || dir == 3 && (xcor+24-48)/48 == b.xcor && (ycor+70)/48 == b.ycor) {
           dir = (int) random(4);
         }
       }
