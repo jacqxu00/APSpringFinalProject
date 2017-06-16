@@ -64,7 +64,6 @@ class Map {
       }
       int iPortal = (int) random(bricks.size());
       portal = new Portal(bricks.get(iPortal).xcor, bricks.get(iPortal).ycor);
-      System.out.println(portal.xcor/48+", "+portal.ycor/48);
     }
   }
 
@@ -144,7 +143,7 @@ class Map {
           }
         }
         count++;
-        if (count > 180) {
+        if (count > 113) {
           i.remove();
           count = 0;
         }

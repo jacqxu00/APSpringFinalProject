@@ -31,7 +31,7 @@ class Fire {
   void display() {
     image(mine.get((int)frame), xcor, ycor);
     if (frame < 3.5) {
-      frame += 0.15; 
+      frame += 0.2; 
     }
   }
 }
