@@ -3,7 +3,7 @@ Peter Lee and Jacqueline Xu
 
 <h2>About</h2>
 <p>Inspired by Super Bomberman 5 (SNES)</p>
-<p>Sprite credits go to <a href="https://www.spriters-resource.com/snes/sbomber5/"> </p>
+<p>Sprite credits go to <a href="https://www.spriters-resource.com/snes/sbomber5/"></p>
 <hr>
 
 <h2>How To Play</h2>
@@ -32,7 +32,9 @@ Peter Lee and Jacqueline Xu
 <h2>Bugs</h2>
 <ul>
 <li>Although the field is sort of "3D," the creatures are not always drawn so that the one in the front is displayed on top</li>
-<li>Specific situations may cause the creatures to get locked in place, unable to move</li>
+<li>Specific situations may cause the creatures to get locked in place, unable to move
+<ul><li>Solution: Press 'R' to reset the character coordinates</li></ul>
+</li>
 <li>The monsters are not extremely "smart" when they reach a bomb they don't turn around</li>
 <li>Bombs explode for full range, even if the fire reaches a wall</li>
 </ul>
