@@ -1,10 +1,16 @@
 class Player extends Creature {
   int numBombs;
+  float jumpFrame = 0.0;
   ArrayList<Bomb> bombs;
   ArrayList<PImage[][]> fires;
+  ArrayList<PImage> jump;
 
   Player(int xcor, int ycor) {
     super(xcor, ycor, "player", map);
+    jump = new ArrayList<PImage>();
+    for (int i = 0; i < 4; i++) {
+      jump.add(loadImage("player/jump" + i + ".png"));
+    }
     numBombs = 1;
     bombs = new ArrayList<Bomb>();
     fires = new ArrayList<PImage[][]>();
@@ -25,6 +31,9 @@ class Player extends Creature {
         }
       } else if (keyPressed && key == ' ') {
         drop();
+      } else if (keyPressed && key == 'r') {
+        xcor = 50;
+        ycor = 50;
       } else {
         frame = 0;
         //makes the character look wherever it was headed to when it stops
@@ -115,6 +124,9 @@ class Player extends Creature {
   }
 
   void jump() {
-    //PETER can you do the animation
+    alive = false;
+    walk = false;
+    image(jump.get((int)jumpFrame),xcor, ycor);
+    jumpFrame += 0.001;
   }
 }

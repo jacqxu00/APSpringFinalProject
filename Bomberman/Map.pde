@@ -116,7 +116,7 @@ class Map {
     Iterator<Attacker> h = attackers.iterator();
     while (h.hasNext()) {
       Attacker a = h.next();
-      if (checkAttack(p.xcor+24, p.ycor + 40, a.xcor+24, a.ycor + 40)) {
+      if (checkAttack(p.xcor + 24, p.ycor + 40, a.xcor+24, a.ycor + 40)) {
         p.die();
         gameOver();
       }
@@ -143,7 +143,7 @@ class Map {
             if (checkAttack(a.xcor+24, a.ycor + 40, f.xcor, f.ycor)) {
               a.die();
               aDeathCount++;
-              if (aDeathCount > 100) {
+              if (aDeathCount > 21) {
                 j.remove();
                 aDeathCount = 0;
               }
