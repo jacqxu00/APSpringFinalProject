@@ -6,7 +6,7 @@ Attacker attacker;
 Fire fire;
 
 void setup() {
-  level = 1;
+  level = 4;
   range = 1;
   size(720, 624);
   main = new Player(50, 50);
@@ -18,6 +18,16 @@ void setup() {
 void draw() {
   map.display();
   map.changes(main);
+  textSize(24);
+  fill(#851818);
+  String s = "LEVEL: " + level;
+  text(s, 20, 32);
+  fill(#851818);
+  String t = "RANGE: "+main.range;
+  text(t, 300, 32);
+  fill(#851818);
+  String u = "BOMBS: "+main.numBombs;
+  text(u, 580, 32);
   if (!map.gameOver) {
     main.move();
     map.check(main);

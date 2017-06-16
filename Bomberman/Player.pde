@@ -4,6 +4,7 @@ class Player extends Creature {
   ArrayList<Bomb> bombs;
   ArrayList<PImage[][]> fires;
   ArrayList<PImage> jump;
+  int range;
 
   Player(int xcor, int ycor) {
     super(xcor, ycor, "player", map);
@@ -15,6 +16,7 @@ class Player extends Creature {
     bombs = new ArrayList<Bomb>();
     fires = new ArrayList<PImage[][]>();
     loadFires();
+    range = 1;
   }
 
   void move() {
@@ -44,7 +46,7 @@ class Player extends Creature {
 
   void drop() {
     if (bombs.size() < numBombs) {
-      bombs.add(new Bomb((xcor+24)/48 * 48, (ycor+70)/48 * 48, 2, fires, map));
+      bombs.add(new Bomb((xcor+24)/48 * 48, (ycor+70)/48 * 48, range, fires, map));
     }
   }
 

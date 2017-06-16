@@ -5,6 +5,7 @@ class Map {
   Block[][] grid;
   int level, bombCount = 0, aDeathCount = 0, pDeathCount = 0;
   Portal portal;
+  Portal item;
   ArrayList<Attacker> attackers;
   ArrayList<Block> bricks;
   ArrayList<Block> grasses;
@@ -45,6 +46,10 @@ class Map {
         }
       }
     }
+    if (level%5 == 2 || level%5 == 4) {
+      int iItem = (int) random(grasses.size());
+      item = new Portal(grasses.get(iItem).xcor, grasses.get(iItem).ycor);
+    }
     int Apercentage = 5 + level/2;
     if (Apercentage > 25) {
       Apercentage = 25;
@@ -77,10 +82,14 @@ class Map {
       PImage img = loadImage("portal.png");
       image(img, portal.xcor, portal.ycor);
     }
-    textSize(30);
-    fill(0);
-    String s = "LEVEL: " + level;
-    text(s, 0, 30);
+    if (level%5 == 2 && item != null) {
+      PImage img = loadImage("itemfire.png");
+      image(img, item.xcor, item.ycor);
+    }
+    if (level%5 == 4 && item != null) {
+      PImage img = loadImage("itembomb.png");
+      image(img, item.xcor, item.ycor);
+    }
   }
 
 
@@ -113,6 +122,13 @@ class Map {
   }
 
   void changes(Player p) {
+    if (level%5 == 2 && item != null && (p.xcor+24)/48 == item.xcor/48 && (p.ycor+70)/48 == item.ycor/48) {
+      p.range++;
+      item = null;
+    } else if (level%5 == 4 && item != null && (p.xcor+24)/48 == item.xcor/48 && (p.ycor+70)/48 == item.ycor/48) {
+      p.numBombs++;
+      item = null;
+    }
     Iterator<Attacker> h = attackers.iterator();
     while (h.hasNext()) {
       Attacker a = h.next();

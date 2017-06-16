@@ -7,12 +7,14 @@ Peter Lee and Jacqueline Xu
 <hr>
 
 <h2>How To Play</h2>
-<p>1. Install all files</p>
-<p>2. Run any pde files</p>
-<p>3. Press play</p>
-<p>4. Use arrow keys to move the main character</p>
-<p>5. Use space bar to drop bombs</p>
-<p>6. Kill all the monsters and find the portal to get to the next level!</p>
+<ol>
+<li>Install all files</li>
+<li>Run any pde files</li>
+<li>Press play</li>
+<li>Use arrow keys to move the main character</li>
+<li>Use space bar to drop bombs</li>
+<li>Kill all the monsters and find the portal to get to the next level!</li>
+</ol>
 <hr>
 
 
@@ -21,11 +23,12 @@ Peter Lee and Jacqueline Xu
 <li>6/3/17 - Random placement of brick walls</li>
 <li>6/4/17 - Bomberman can move around successfully with sprites</li>
 <li>6/6/17 - Wall detection: Bomberman won't walk into walls</li>
-<li>6/9/17 - Bomb detection: Bomberman and attackers won't walk through bombs</li>
+<li>6/9/17 - Bomb detection: Attackers won't walk through bombs</li>
 <li>6/11/17 - Bomb animation and exploding</li>
 <li>6/12/17 - Attacker movement: changes to random direction when it reaches dead end</li>
 <li>6/13/17 - Successful explosion: fires kill creatures </li>
-<li>6/15/17 - Portal successful, new level when player kills all monsters and reaches portal </li>
+<li>6/15/17 - Portal successful: new level when player kills all monsters and reaches portal</li>
+<li>6/16/17 - Items successful: items placed at certain levels, and when picked up will work</li>
 </ul>
 <hr>
 
