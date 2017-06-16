@@ -11,7 +11,7 @@ class Player extends Creature {
     for (int i = 0; i < 4; i++) {
       jump.add(loadImage("player/jump" + i + ".png"));
     }
-    numBombs = 5;
+    numBombs = 1;
     bombs = new ArrayList<Bomb>();
     fires = new ArrayList<PImage[][]>();
     loadFires();
