@@ -1,5 +1,6 @@
 abstract class Creature {
-  int xcor, ycor, speed;
+  int xcor, ycor;
+  float speed;
   float frame = 0.0, count = 0.0;
   boolean walk = true;
   boolean alive;

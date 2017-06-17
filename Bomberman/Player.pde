@@ -12,7 +12,7 @@ class Player extends Creature {
     for (int i = 0; i < 4; i++) {
       jump.add(loadImage("player/jump" + i + ".png"));
     }
-    numBombs = 3;
+    numBombs = 1;
     bombs = new ArrayList<Bomb>();
     fires = new ArrayList<PImage[][]>();
     loadFires();
@@ -32,7 +32,13 @@ class Player extends Creature {
           update(3);
         }
       } else if (keyPressed && key == ' ') {
-        drop();
+        boolean state = false;
+        boolean pstate = false;
+        state = keyPressed;
+        if (state != pstate) {
+          drop();
+          pstate = state;
+        }
       } else if (keyPressed && key == 'r') {
         xcor = 50;
         ycor = 50;
@@ -45,8 +51,6 @@ class Player extends Creature {
   }
 
   void drop() {
-    println(bombs.size());
-    println(numBombs);
     if (bombs.size() < numBombs) {
       bombs.add(new Bomb((xcor+24)/48 * 48, (ycor+70)/48 * 48, range, fires, map));
     }
@@ -130,7 +134,7 @@ class Player extends Creature {
   void jump() {
     alive = false;
     walk = false;
-    image(jump.get((int)jumpFrame),xcor, ycor);
+    image(jump.get((int)jumpFrame), xcor, ycor);
     jumpFrame += 0.175;
     if (jumpFrame >= 4) {
       jumpFrame = 0;

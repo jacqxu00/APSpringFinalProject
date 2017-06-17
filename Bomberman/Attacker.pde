@@ -5,12 +5,15 @@ class Attacker extends Creature {
   Block[][] grid;
   boolean deadEnd, move;
 
-  Attacker(int xcor, int ycor) {
+  Attacker(int xcor, int ycor, int level) {
     super(xcor, ycor + 5, "attacker", map);
     move = true;
     deadEnd = false;
     moves = new ArrayList<Integer>();
-    speed = 1;
+    speed = 1 + (level-1) * 0.1;
+    if (speed > 3) {
+      speed = 3;
+    }
   }
 
   boolean checkCor(int y, int x) {

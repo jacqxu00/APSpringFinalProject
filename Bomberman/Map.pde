@@ -61,7 +61,7 @@ class Map {
           if (grid[c][r].type == 0 && r >= 4 && c >= 4) {
             int Atest = (int) random(100);
             if (Atest <= Apercentage && attackNum < 5) {
-              attackers.add(new Attacker(c*48, r*48 - 48));
+              attackers.add(new Attacker(c*48, r*48 - 48, level));
               attackNum++;
             }
           }
@@ -127,6 +127,7 @@ class Map {
       item = null;
     } else if (level%5 == 4 && item != null && (p.xcor+24)/48 == item.xcor/48 && (p.ycor+70)/48 == item.ycor/48) {
       p.numBombs++;
+      p.bombs.clear();
       item = null;
     }
     Iterator<Attacker> h = attackers.iterator();
@@ -168,8 +169,12 @@ class Map {
         b.bombCount++;
         if (b.bombCount > 113) {
           i.remove();
-          b.bombCount = 0;
         }
+        String ans = "";
+        for (Bomb a : p.bombs) {
+          ans += a.xcor/48+", "+a.ycor/48;
+        }
+        println(ans);
       }
     }
   }

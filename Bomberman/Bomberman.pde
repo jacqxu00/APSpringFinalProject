@@ -6,7 +6,7 @@ Attacker attacker;
 Fire fire;
 
 void setup() {
-  level = 4;
+  level = 1;
   range = 1;
   size(720, 624);
   main = new Player(50, 50);
