@@ -174,7 +174,7 @@ class Map {
         for (Bomb a : p.bombs) {
           ans += a.xcor/48+", "+a.ycor/48;
         }
-        println(ans);
+        //println(ans);
       }
     }
   }

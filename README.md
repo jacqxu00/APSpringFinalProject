@@ -38,7 +38,8 @@ Peter Lee and Jacqueline Xu
 <li>Specific situations may cause the creatures to get locked in place, unable to move
 <ul><li>Solution: Press 'R' to reset the character coordinates</li></ul>
 </li>
-<li>The monsters are not extremely "smart" when they reach a bomb they don't turn around</li>
+<li>The monsters are not extremely "smart": when they reach a bomb they don't turn around</li>
+<li>For some reason, multiple bombs won't work. When you get multiple bombs and you press SPACE to drop a bomb, it automatically puts multiple bombs in that spot. We thought it was because keyPress will continually run true when a key is pressed, but when we tried to remedy that it didn't work, and we couldn't figure it out</li>
 </ul>
 
 
