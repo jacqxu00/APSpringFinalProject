@@ -12,7 +12,7 @@ class Player extends Creature {
     for (int i = 0; i < 4; i++) {
       jump.add(loadImage("player/jump" + i + ".png"));
     }
-    numBombs = 1;
+    numBombs = 3;
     bombs = new ArrayList<Bomb>();
     fires = new ArrayList<PImage[][]>();
     loadFires();
@@ -45,6 +45,8 @@ class Player extends Creature {
   }
 
   void drop() {
+    println(bombs.size());
+    println(numBombs);
     if (bombs.size() < numBombs) {
       bombs.add(new Bomb((xcor+24)/48 * 48, (ycor+70)/48 * 48, range, fires, map));
     }

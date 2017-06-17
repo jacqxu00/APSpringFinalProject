@@ -5,6 +5,7 @@ class Bomb {
   long time;
   int range;
   int count = 0;
+  int bombCount = 0;
   int xcor, ycor;
   float frame = 0.0;
   ArrayList<PImage> bomb;
